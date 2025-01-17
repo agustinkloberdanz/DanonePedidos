@@ -1,0 +1,7 @@
+{
+  "name": "Vilma Transportes",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
