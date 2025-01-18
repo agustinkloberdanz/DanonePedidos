@@ -376,12 +376,12 @@ export const listOfProducts = [
                 {
                     description: 'Activia sachet 1000gr frutilla y manzana',
                     sku: '9537-76',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/823423-800-auto?v=638508253636970000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Activia sachet 1000gr ciruela',
                     sku: '9537-81',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/823424-800-auto?v=638508253641030000&width=800&height=auto&aspect=true'
                 }
             ]
         }
@@ -394,17 +394,17 @@ export const listOfProducts = [
                 {
                     description: 'Actimel botellita 100gr frutilla',
                     sku: '9581-2',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/827452-800-auto?v=638558014639670000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Actimel botellita 100gr multifruta',
                     sku: '9581-85',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/827454-800-auto?v=638558014646400000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Actimel botellita 100gr KIDS',
                     sku: '9569-2',
-                    imageURL: ''
+                    imageURL: 'https://ardiaprod.vtexassets.com/arquivos/ids/337433/Leche-Fermentada-Kids-Sabor-Frutilla-Dulce-Actimel-100-Gr-_1.jpg?v=638665698624800000'
                 },
             ]
         }
@@ -417,182 +417,177 @@ export const listOfProducts = [
                 {
                     description: 'Clásico postre 95gr vainilla',
                     sku: '6146-1',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/816820-800-auto?v=638470867101070000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico postre 95gr chocolate',
                     sku: '6146-7',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/816819-800-auto?v=638470867097800000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico flan 100gr vainilla',
                     sku: '6101-1',
-                    imageURL: ''
+                    imageURL: 'https://d1on8qs0xdu5jz.cloudfront.net/webapp/images/productos/b/0000028000/28501.jpg'
                 },
                 {
-                    description: 'Chocolatada clásica 1L',
+                    description: 'Chocolatada clásica 1Lt.',
                     sku: '9907-7',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/818351-800-auto?v=638482959313100000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Chocolatada clásica 200ml',
                     sku: '9906-7',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/818350-800-auto?v=638482959309800000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico cereales 159gr',
                     sku: '6107-0',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/827423-800-auto?v=638558014547000000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico rocklets 164gr',
                     sku: '6106-0',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/781385-800-auto?v=638195133999500000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico firme 190gr vainilla',
                     sku: '6104-1',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/785297-800-auto?v=638223765466730000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico firme 190gr frutilla',
                     sku: '6104-2',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/827443-800-auto?v=638558014611870000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico batido 120gr vainilla',
                     sku: '6109-1',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/827441-800-auto?v=638558014605300000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico batido 120gr frutilla',
                     sku: '6109-2',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/781402-800-auto?v=638195134074870000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico batido 120gr durazno',
                     sku: '6109-4',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/781409-800-auto?v=638195134101630000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico firme 120gr vainilla',
                     sku: '6105-1',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/781413-800-auto?v=638195134115430000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico firme 120gr frutilla',
                     sku: '6105-2',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/781397-800-auto?v=638195134050930000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico batido 480gr vainilla',
                     sku: '6126-1',
-                    imageURL: ''
+                    imageURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh3INSlhw7KVaGoU5V9CW7LTgc7zUbv2BLsA&s'
                 },
                 {
                     description: 'Clásico batido 480gr frutilla',
                     sku: '6126-2',
-                    imageURL: ''
+                    imageURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuZ0x27DtCcbQ8E4YZfCH_HCC4wXRQR9PW8A&s'
                 },
                 {
                     description: 'Clásico sachet 900gr vainilla',
                     sku: '6119-1',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/827470-800-auto?v=638558014698130000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico sachet 900gr frutilla',
                     sku: '6119-2',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/791934-800-auto?v=638291825087130000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico sachet 900gr durazno',
                     sku: '6119-4',
-                    imageURL: ''
-                },
-                {
-                    description: 'Clásico sachet 900gr banana',
-                    sku: '6119-5',
-                    imageURL: ''
+                    imageURL: 'https://ardiaprod.vtexassets.com/arquivos/ids/337559-800-auto?v=638665700088630000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico sachet 1100gr vainilla',
                     sku: '6148-1',
-                    imageURL: ''
+                    imageURL: 'https://carrefourar.vtexassets.com/arquivos/ids/426295-150-auto?v=638385203277400000&width=150&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico sachet 1100gr frutilla',
                     sku: '6148-2',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/805720-800-auto?v=638398290885730000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico firme 190gr vainilla descremado',
                     sku: '6115-1',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/785301-800-auto?v=638223765487570000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico firme 190gr frutilla descremado',
                     sku: '6115-2',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/785302-800-auto?v=638223765490830000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico batido 120gr vainilla descremado',
                     sku: '6103-1',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/787000-800-auto?v=638240817931770000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico batido 120gr frutilla descremado',
                     sku: '6103-2',
-                    imageURL: ''
+                    imageURL: 'https://statics.dinoonline.com.ar/imagenes/medium_150x150/3263707_m.jpg'
                 },
                 {
                     description: 'Clásico cereales 157gr descremado',
                     sku: '6113-0',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/791114-800-auto?v=638284017767170000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico sachet 900gr vainilla descremado',
                     sku: '6118-1',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/791938-800-auto?v=638291825100170000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico sachet 900gr frutilla descremado',
                     sku: '6118-2',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/791940-800-auto?v=638291825107030000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico sachet 900gr vainilla 0% lactosa',
                     sku: '6117-1',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/791933-800-auto?v=638291825083230000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico sachet 900gr frutilla 0% lactosa',
                     sku: '6117-2',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/791926-800-auto?v=638291825059170000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico queso 290gr',
                     sku: '6142-0',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/827468-800-auto?v=638558014691730000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico queso 290gr light',
                     sku: '6143-0',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/791930-800-auto?v=638291825070800000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico queso 195gr',
                     sku: '6144-0',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/818353-800-auto?v=638482959321370000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico queso 195gr light',
                     sku: '6145-0',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/818342-800-auto?v=638482959195530000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico sacheton 4Kg estilo italiano',
                     sku: '6160-0',
-                    imageURL: ''
+                    imageURL: 'https://maxiconsumo.com/media/catalog/product/cache/8313a15b471f948db4d9d07d4a9f04a2/2/6/26226_1732076459673d63ab76acd6.02122174.jpg'
                 },
             ]
         }
@@ -605,32 +600,32 @@ export const listOfProducts = [
                 {
                     description: 'Casancrem 290gr',
                     sku: '6136-0',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/827476-800-auto?v=638558014721630000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Casancrem 290gr light',
                     sku: '6138-0',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/827469-800-auto?v=638558014695170000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Casancrem 500gr',
                     sku: '6149-0',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/836142-800-auto?v=638633290302770000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Casancrem 500gr light',
                     sku: '6150-0',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/836141-800-auto?v=638633290299800000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Casancrem 290gr sin sellos',
                     sku: '6094-0',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/822987-800-auto?v=638508247706270000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Casancrem sacheton 4Kg',
                     sku: '6086-0',
-                    imageURL: ''
+                    imageURL: 'https://maxiconsumo.com/media/catalog/product/cache/8313a15b471f948db4d9d07d4a9f04a2/2/7/27839_1732076462673d63ae6d3a78.50544569.jpg'
                 },
             ]
         }
@@ -641,19 +636,19 @@ export const listOfProducts = [
             name: 'Cindor',
             products: [
                 {
-                    description: 'Cindor 1L chocolate',
+                    description: 'Cindor 1Lt. chocolate',
                     sku: '9196-7',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/827421-800-auto?v=638558014542000000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Cindor 200ml chocolate',
                     sku: '9195-7',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/827422-800-auto?v=638558014544830000&width=800&height=auto&aspect=true'
                 },
                 {
-                    description: 'Cindor 1L chocolate sin sellos',
+                    description: 'Cindor 1Lt. chocolate sin sellos',
                     sku: '9154-7',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/827445-800-auto?v=638558014619200000&width=800&height=auto&aspect=true'
                 }
             ]
         }
@@ -666,32 +661,32 @@ export const listOfProducts = [
                 {
                     description: 'Silk 1Lt. vainilla sin azúcar',
                     sku: '9640-1',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/827482-800-auto?v=638558014741000000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Silk 1Lt. coco sin azúcar',
                     sku: '9662-27',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/827480-800-auto?v=638558014734700000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Silk 1Lt. almendras sin azúcar',
                     sku: '9665-12',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/827460-800-auto?v=638558014666100000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Silk 1Lt. almendras',
                     sku: '9665-19',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/827479-800-auto?v=638558014731970000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Silk 1Lt. coco',
                     sku: '9662-44',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/827478-800-auto?v=638558014728530000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Silk 1Lt. chocolate',
                     sku: '9641-7',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/827477-800-auto?v=638558014724900000&width=800&height=auto&aspect=true'
                 },
             ]
         }
@@ -704,37 +699,37 @@ export const listOfProducts = [
                 {
                     description: 'Gran Compra firme 120gr vainilla',
                     sku: '1382-1',
-                    imageURL: ''
+                    imageURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXDhEYwYs9VP5fueZ195PdhyG5viuzdxoZ2A&s'
                 },
                 {
                     description: 'Gran Compra firme 120gr frutilla',
                     sku: '1382-2',
-                    imageURL: ''
+                    imageURL: 'https://statics.dinoonline.com.ar/imagenes/medium_150x150/3264247_m.jpg'
                 },
                 {
                     description: 'Gran Compra cremoso 120gr vainilla',
                     sku: '1384-1',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/827491-800-auto?v=638558014771330000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Gran Compra cremoso 120gr frutilla',
                     sku: '1384-2',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/827492-800-auto?v=638558014774000000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Gran Compra cereales 154gr',
                     sku: '1383-22',
-                    imageURL: ''
+                    imageURL: 'https://arcordiezb2c.vteximg.com.br/arquivos/ids/182617/YOGUR-GRAN-COMPRA-BATIDO-CON-CEREALES-1-19381.jpg?v=638457789831170000'
                 },
                 {
                     description: 'Gran Compra sachet 900gr vainilla',
                     sku: '1387-1',
-                    imageURL: ''
+                    imageURL: 'https://www.lacoopeencasa.coop/media/lcec/publico/articulos/f/6/d/f6df9263fc66d73b77dfb8b3b9d3c058'
                 },
                 {
                     description: 'Gran Compra sachet 900gr frutilla',
                     sku: '1387-2',
-                    imageURL: ''
+                    imageURL: 'https://www.lacoopeencasa.coop/media/lcec/publico/articulos/c/e/5/ce5f239a88d9407b339d22e7218d3396'
                 }
             ]
         }
