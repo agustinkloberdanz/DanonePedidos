@@ -26,7 +26,27 @@
     <ion-title>{{item.brand.name}}</ion-title>
   </ion-toolbar>
 
-  <ion-list>
+  <div class="products">
+    <ion-card *ngFor="let product of item.brand.products" class="product">
+      <ion-img [src]="product.imageURL" [alt]="product.description"></ion-img>
+      <ion-card-header>
+        <ion-card-subtitle>{{product.description}}</ion-card-subtitle>
+        <ion-card-title>
+          @if(checkIsInOrder(product)) {
+          <ion-button size="default" (click)="deleteProduct(product)" expand="block" color="danger">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-button>
+          } @else {
+          <ion-button size="default" shape="round" (click)="addProduct(product)" expand="block" color="success">
+            <ion-icon slot="icon-only" name="add"></ion-icon>
+          </ion-button>
+          }
+        </ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </div>
+
+  <!-- <ion-list>
     <ion-item color="clear" *ngFor="let product of item.brand.products" class="product">
       <ion-label>{{product.description}}</ion-label>
       @if(checkIsInOrder(product)) {
@@ -39,7 +59,7 @@
       </ion-button>
       }
     </ion-item>
-  </ion-list>
+  </ion-list> -->
   }
 
   <ion-modal [isOpen]="isOrderModalOpen" [canDismiss]="canDismiss">

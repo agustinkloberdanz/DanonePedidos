@@ -3,10 +3,16 @@
 }
 
 .product {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  text-align: center;
+  width: 90%;
 }
 
 .empty-cart-message {
   text-align: center;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
 }
