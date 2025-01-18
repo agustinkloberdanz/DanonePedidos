@@ -75,16 +75,9 @@ export class HomePage {
   }
 
   copyOrder() {
-    const market = prompt('Ingrese el mercado')
-    if (market !== null) {
-      if (market !== '') {
-        const list = this.generateStringFromArray(this.order)
-        const orderText = `${market}\n${list}`
-        navigator.clipboard.writeText(orderText)
-        this.tools.presentToast('Pedido copiado en portapapeles, simplemente péguelo en Whatsapp para enviarlo')
-        this.closeCart()
-      } else this.tools.presentToast('Ingrese el mercado al que corresponde el pedido')
-    }
+    const order = this.generateStringFromArray(this.order)
+    navigator.clipboard.writeText(order)
+    this.tools.presentToast('Pedido copiado en portapapeles, simplemente péguelo en Whatsapp para enviarlo')
   }
 
   generateStringFromArray(array: ProductInCart[]) {
