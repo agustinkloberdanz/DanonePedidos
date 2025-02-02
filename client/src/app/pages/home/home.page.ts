@@ -14,7 +14,7 @@ export class HomePage {
   listOfProducts: any = listOfProducts
   data: any
 
-  order: ProductInCart[] = []
+  order: ProductInCart[] = this.getOrder()
 
   isOrderModalOpen: boolean = false
   canDismiss = false
@@ -38,6 +38,7 @@ export class HomePage {
         this.tools.presentToast('Error - Ingrese una cantidad de unidades válida')
       }
     }
+    this.setOrder()
   }
 
   deleteProduct(product: ProductInCart) {
@@ -45,6 +46,7 @@ export class HomePage {
       this.order = this.order.filter(item => item.sku !== product.sku)
       this.tools.presentToast('Producto eliminado del pedido')
     }
+    this.setOrder()
   }
 
   modifyQuantity(product: ProductInCart) {
@@ -56,6 +58,7 @@ export class HomePage {
       }
       else this.tools.presentToast('Error - Ingrese una cantidad de unidades válida')
     }
+    this.setOrder()
   }
 
   checkIsInOrder(product: Product): boolean {
@@ -90,6 +93,7 @@ export class HomePage {
       this.closeCart()
       this.tools.presentToast('Pedido borrado')
     }
+    this.setOrder()
   }
 
   handleChange(e: any) {
@@ -107,5 +111,21 @@ export class HomePage {
     dessert.setDate(date.getDate() + 4)
 
     alert(`Hoy sacamos\nYogures y leches: ${yogur.getDate()}/${yogur.getMonth() + 1}\nPostres y quesos: ${dessert.getDate()}/${dessert.getMonth() + 1}`)
+  }
+
+  getQuantity(product: Product) {
+    var quantity = ''
+    this.order.map(item => { if (item.sku === product.sku) { quantity = item.quantity } })
+      return quantity
+  }
+
+  setOrder() {
+    localStorage.setItem('order', JSON.stringify(this.order))
+  }
+
+  getOrder(): ProductInCart[] {
+    let order = JSON.parse(localStorage.getItem('order')!)
+    if (order) return order
+    else return []
   }
 }

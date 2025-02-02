@@ -255,7 +255,7 @@ export const listOfProducts = [
                 {
                     description: 'Yogurisimo sachet 900gr natural',
                     sku: '6596-12',
-                    imageURL: ''
+                    imageURL: 'https://www.yogurisimo.com.ar/wp-content/uploads/YSS-Sachet-1kg-con-sello.png'
                 },
                 {
                     description: 'Yogurisimo sachet 1100gr vainilla',

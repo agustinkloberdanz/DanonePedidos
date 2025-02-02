@@ -34,7 +34,7 @@
         <ion-card-title>
           @if(checkIsInOrder(product)) {
           <ion-button size="default" (click)="deleteProduct(product)" expand="block" color="danger">
-            <ion-icon slot="icon-only" name="trash"></ion-icon>
+            {{getQuantity(product)}}<ion-icon slot="icon-only" name="trash"></ion-icon>
           </ion-button>
           } @else {
           <ion-button size="default" shape="round" (click)="addProduct(product)" expand="block" color="success">
@@ -45,21 +45,6 @@
       </ion-card-header>
     </ion-card>
   </div>
-
-  <!-- <ion-list>
-    <ion-item color="clear" *ngFor="let product of item.brand.products" class="product">
-      <ion-label>{{product.description}}</ion-label>
-      @if(checkIsInOrder(product)) {
-      <ion-button size="default" (click)="deleteProduct(product)" color="danger">
-        <ion-icon slot="icon-only" name="trash"></ion-icon>
-      </ion-button>
-      } @else {
-      <ion-button size="default" shape="round" (click)="addProduct(product)" color="success">
-        <ion-icon slot="icon-only" name="add"></ion-icon>
-      </ion-button>
-      }
-    </ion-item>
-  </ion-list> -->
   }
 
   <ion-modal [isOpen]="isOrderModalOpen" [canDismiss]="canDismiss">
