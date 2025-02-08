@@ -3,6 +3,7 @@ import { listOfProducts } from '../../listOfProducts';
 import { AlertTools } from 'src/app/tools/AlertTools';
 import { ProductInCart } from 'src/app/models/product-in-cart';
 import { Product } from 'src/app/models/product';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -14,31 +15,67 @@ export class HomePage {
   listOfProducts: any = listOfProducts
   data: any
 
+  productToAdd: ProductInCart = new ProductInCart()
+
   order: ProductInCart[] = this.getOrder()
 
   isOrderModalOpen: boolean = false
+  isAddProductModalOpen: boolean = false
   canDismiss = false
 
-  constructor(private tools: AlertTools) {
+  quantityForm: FormGroup
+  quantityFormJSON: any = {
+    quantity: ['', [Validators.required, Validators.pattern("^[0-9]*$")]]
+  }
+
+  constructor(private tools: AlertTools, private fb: FormBuilder) {
     this.data = [...listOfProducts]
+    this.quantityForm = this.fb.group(this.quantityFormJSON)
   }
 
   ionViewWillEnter() {
     console.log(this.data)
   }
 
-  addProduct(product: ProductInCart) {
-    const quantity = prompt(`${product.description}\nCantidad de unidades`)
-    if (quantity !== null) {
-      if (quantity !== '' && parseInt(quantity) > 0) {
-        product.quantity = quantity.replace(/\s+/g, '')
-        this.order.push(product)
-        this.tools.presentToast('Producto agregado al pedido')
-      } else {
-        this.tools.presentToast('Error - Ingrese una cantidad de unidades válida')
-      }
+  openAddProductModal(product: ProductInCart) {
+    this.canDismiss = false
+    this.productToAdd.description = product.description
+    this.productToAdd.sku = product.sku
+    this.productToAdd.quantity = ''
+    this.quantityForm = this.fb.group(this.quantityFormJSON)
+    this.isAddProductModalOpen = true
+  }
+
+  closeAddProductModal() {
+    this.canDismiss = true
+    this.productToAdd.description = ''
+    this.productToAdd.quantity = ''
+    this.productToAdd.sku = ''
+    this.quantityForm = this.fb.group(this.quantityFormJSON)
+    this.isAddProductModalOpen = false
+  }
+
+  keyDownFunction(event: any) {
+    if (event.keyCode === 13) {
+      this.addProductToCart()
     }
-    this.setOrder()
+  }
+
+  addProductToCart() {
+    if (this.quantityForm.valid) {
+      const product: ProductInCart = {
+        quantity: this.quantityForm.get('quantity')!.value,
+        description: this.productToAdd.description,
+        sku: this.productToAdd.sku
+      }
+
+      this.order.push(product)
+      this.tools.presentToast('Producto agregado al pedido')
+      this.closeAddProductModal()
+      this.setOrder()
+    } else {
+      this.tools.presentToast('Error- Ingrese una cantidad válida')
+    }
   }
 
   deleteProduct(product: ProductInCart) {
@@ -68,12 +105,10 @@ export class HomePage {
   }
 
   showCart() {
-    this.canDismiss = false
     this.isOrderModalOpen = true
   }
 
   closeCart() {
-    this.canDismiss = true
     this.isOrderModalOpen = false
   }
 
@@ -116,7 +151,7 @@ export class HomePage {
   getQuantity(product: Product) {
     var quantity = ''
     this.order.map(item => { if (item.sku === product.sku) { quantity = item.quantity } })
-      return quantity
+    return quantity
   }
 
   setOrder() {

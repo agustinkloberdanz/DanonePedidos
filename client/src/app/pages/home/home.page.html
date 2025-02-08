@@ -37,7 +37,8 @@
             {{getQuantity(product)}}<ion-icon slot="icon-only" name="trash"></ion-icon>
           </ion-button>
           } @else {
-          <ion-button size="default" shape="round" (click)="addProduct(product)" expand="block" color="success">
+          <ion-button size="default" shape="round" (click)="openAddProductModal(product)" expand="block"
+            color="success">
             <ion-icon slot="icon-only" name="add"></ion-icon>
           </ion-button>
           }
@@ -47,7 +48,28 @@
   </div>
   }
 
-  <ion-modal [isOpen]="isOrderModalOpen" [canDismiss]="canDismiss">
+  <ion-modal id="add-product-modal" #modal [isOpen]="isAddProductModalOpen" [canDismiss]="canDismiss">
+    <ng-template>
+      <div class="wrapper">
+        <h1>{{productToAdd.description}}</h1>
+
+        <form [formGroup]="quantityForm" (keydown)="keyDownFunction($event)">
+          <ion-item>
+            <ion-label>Cantidad: </ion-label>
+            <ion-input color=" medium" clearInput="true" type="number" formControlName="quantity"
+              placeholder="Ingrese la cantidad"></ion-input>
+          </ion-item>
+
+          <ion-toolbar color="none">
+            <ion-button size="default" slot="start" (click)="closeAddProductModal()" fill="clear">Cancelar</ion-button>
+            <ion-button size="default" slot="end" (click)="addProductToCart()" fill="solid" shape="round">Agregar</ion-button>
+          </ion-toolbar>
+        </form>
+      </div>
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal [isOpen]="isOrderModalOpen">
     <ng-template>
       <ion-header [translucent]="true">
         <ion-toolbar>
