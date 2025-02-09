@@ -16,6 +16,7 @@ export class HomePage {
   data: any
 
   productToAdd: ProductInCart = new ProductInCart()
+  errorMessage: string = 'Ingrese una cantidad válida'
 
   order: ProductInCart[] = this.getOrder()
 
@@ -73,8 +74,6 @@ export class HomePage {
       this.tools.presentToast('Producto agregado al pedido')
       this.closeAddProductModal()
       this.setOrder()
-    } else {
-      this.tools.presentToast('Error- Ingrese una cantidad válida')
     }
   }
 
