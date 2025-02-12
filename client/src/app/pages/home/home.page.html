@@ -48,16 +48,15 @@
   </div>
   }
 
-  <ion-modal id="add-product-modal" [isOpen]="isAddProductModalOpen" [canDismiss]="canDismiss">
+  <ion-modal id="add-product-modal" [isOpen]="isAddProductModalOpen" [canDismiss]="canDismiss" (didPresent)="onDidPresent()">
     <ng-template>
       <div class="wrapper">
         <h1>{{productToAdd.description}}</h1>
 
         <form [formGroup]="quantityForm" (keydown)="keyDownFunction($event)">
           <ion-item>
-            <ion-label>Cantidad: </ion-label>
-            <ion-input color=" medium" clearInput="true" [errorText]="errorMessage" type="number" formControlName="quantity"
-              placeholder="Ingrese la cantidad"></ion-input>
+            <ion-input #quantityInput color="medium" clearInput="true" [errorText]="errorMessage" inputmode="numeric" formControlName="quantity"
+              placeholder="Cantidad de unidades"></ion-input>
           </ion-item>
 
           <ion-toolbar color="none">

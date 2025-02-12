@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { listOfProducts } from '../../listOfProducts';
 import { AlertTools } from 'src/app/tools/AlertTools';
 import { ProductInCart } from 'src/app/models/product-in-cart';
 import { Product } from 'src/app/models/product';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IonInput } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   standalone: false,
 })
 export class HomePage {
+  @ViewChild('quantityInput') quantityInput!: IonInput;
+
+  onDidPresent() {
+    this.quantityInput.setFocus();
+  }
+
   listOfProducts: any = listOfProducts
   data: any
 

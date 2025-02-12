@@ -185,7 +185,7 @@ export const listOfProducts = [
                 {
                     description: 'Yogurisimo firme 120gr frutilla',
                     sku: '6545-2',
-                    imageURL: 'https://alberdisa.vteximg.com.br/arquivos/ids/174399-1000-1000/Yogurisimo-Firme-Frutilla-120gr.png?v=638151144330900000'
+                    imageURL: 'https://hiperlibertad.vtexassets.com/arquivos/ids/220767-800-auto?v=638460381892230000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Yogurisimo cereales 166gr',
@@ -255,7 +255,7 @@ export const listOfProducts = [
                 {
                     description: 'Yogurisimo sachet 900gr natural',
                     sku: '6596-12',
-                    imageURL: 'https://www.yogurisimo.com.ar/wp-content/uploads/YSS-Sachet-1kg-con-sello.png'
+                    imageURL: 'https://cdn1.kilbelonline.com/webapp/images/productos/b/0000028000/28038.jpg'
                 },
                 {
                     description: 'Yogurisimo sachet 1100gr vainilla',
@@ -358,12 +358,12 @@ export const listOfProducts = [
                 {
                     description: 'Ser postre 95gr dulce de leche',
                     sku: '9188-6',
-                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/818344-800-auto?v=638482959202900000&width=800&height=auto&aspect=true'
+                    imageURL: 'https://hiperlibertad.vtexassets.com/arquivos/ids/220832/Postre-Deli-dulce-de-leche-Ser-95gr-1-48093.jpg?v=638460382127170000'
                 },
                 {
                     description: 'Ser postre 95gr chocolate',
                     sku: '9188-7',
-                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/818337-800-auto?v=638482959181970000&width=800&height=auto&aspect=true'
+                    imageURL: 'https://hiperlibertad.vtexassets.com/arquivos/ids/220834/Postre-Deli-chocolate-Ser-95gr-1-48053.jpg?v=638460382134670000'
                 },
             ]
         }
@@ -487,12 +487,12 @@ export const listOfProducts = [
                 {
                     description: 'Clásico batido 480gr vainilla',
                     sku: '6126-1',
-                    imageURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh3INSlhw7KVaGoU5V9CW7LTgc7zUbv2BLsA&s'
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/848293-800-auto?v=638693770207670000&width=800&height=600&aspect=true'
                 },
                 {
                     description: 'Clásico batido 480gr frutilla',
                     sku: '6126-2',
-                    imageURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuZ0x27DtCcbQ8E4YZfCH_HCC4wXRQR9PW8A&s'
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/848294-800-auto?v=638693770211500000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico sachet 900gr vainilla',
@@ -512,7 +512,7 @@ export const listOfProducts = [
                 {
                     description: 'Clásico sachet 1100gr vainilla',
                     sku: '6148-1',
-                    imageURL: 'https://carrefourar.vtexassets.com/arquivos/ids/426295-150-auto?v=638385203277400000&width=150&height=auto&aspect=true'
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/805721-800-auto?v=638398290888870000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico sachet 1100gr frutilla',
