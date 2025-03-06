@@ -3,8 +3,8 @@
     <ion-title>GRUPO DANONE</ion-title>
     <ion-buttons slot="end">
       <ion-button color="primary" (click)="showCart()">
+        <ion-badge>{{order.length}}</ion-badge>
         <ion-icon size="large" name="list"></ion-icon>
-        <ion-badge slot="end">{{order.length}}</ion-badge>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -49,20 +49,22 @@
   </div>
   }
 
-  <ion-modal id="add-product-modal" [isOpen]="isAddProductModalOpen" [canDismiss]="canDismiss" (didPresent)="onDidPresent()">
+  <ion-modal id="add-product-modal" [isOpen]="isAddProductModalOpen" [canDismiss]="canDismiss"
+    (didPresent)="onDidPresent()">
     <ng-template>
       <div class="wrapper">
         <h1>{{productToAdd.description}}</h1>
 
         <form [formGroup]="quantityForm" (keydown)="keyDownFunction($event)">
           <ion-item>
-            <ion-input #quantityInput color="medium" clearInput="true" [errorText]="errorMessage" inputmode="numeric" formControlName="quantity"
-              placeholder="Cantidad de unidades"></ion-input>
+            <ion-input #quantityInput color="medium" clearInput="true" [errorText]="errorMessage" inputmode="numeric"
+              formControlName="quantity" placeholder="Cantidad de unidades"></ion-input>
           </ion-item>
 
           <ion-toolbar color="none">
             <ion-button size="default" slot="start" (click)="closeAddProductModal()" fill="clear">Cancelar</ion-button>
-            <ion-button size="default" slot="end" (click)="addProductToCart()" fill="solid" shape="round">Agregar</ion-button>
+            <ion-button size="default" slot="end" (click)="addProductToCart()" fill="solid"
+              shape="round">Agregar</ion-button>
           </ion-toolbar>
         </form>
       </div>

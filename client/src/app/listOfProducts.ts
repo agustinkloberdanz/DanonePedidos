@@ -117,7 +117,7 @@ export const listOfProducts = [
                 {
                     description: 'Danonino sachet 900gr frutilla',
                     sku: '6437-2',
-                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/835083-800-auto?v=638618494032970000&width=800&height=auto&aspect=true'
+                    imageURL: 'https://d1on8qs0xdu5jz.cloudfront.net/webapp/images/productos/b/0000028000/28500.jpg'
                 },
             ]
         }
@@ -135,7 +135,7 @@ export const listOfProducts = [
                 {
                     description: 'Yogurisimo firme 190gr frutilla',
                     sku: '6546-2',
-                    imageURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaC__ulSucTxnXIVfCdxefO6-KKuz9pV5W8A&s'
+                    imageURL: 'https://carrefourar.vtexassets.com/arquivos/ids/382144-1600-auto?v=638315205949830000&width=1600&height=auto&aspect=true'
                 },
                 {
                     description: 'Yogurisimo natural con azúcar 190gr',
@@ -537,7 +537,7 @@ export const listOfProducts = [
                 {
                     description: 'Clásico batido 120gr frutilla descremado',
                     sku: '6103-2',
-                    imageURL: 'https://statics.dinoonline.com.ar/imagenes/medium_150x150/3263707_m.jpg'
+                    imageURL: 'https://ardiaprod.vtexassets.com/arquivos/ids/342252-800-auto?v=638708915729870000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico cereales 157gr descremado',
@@ -699,12 +699,12 @@ export const listOfProducts = [
                 {
                     description: 'Gran Compra firme 120gr vainilla',
                     sku: '1382-1',
-                    imageURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXDhEYwYs9VP5fueZ195PdhyG5viuzdxoZ2A&s'
+                    imageURL: 'https://masonlineprod.vtexassets.com/arquivos/ids/291463/Yogur-Gran-Compra-Firme-Sabor-Vainilla-120g-1-44024.jpg?v=638255073804930000'
                 },
                 {
                     description: 'Gran Compra firme 120gr frutilla',
                     sku: '1382-2',
-                    imageURL: 'https://statics.dinoonline.com.ar/imagenes/medium_150x150/3264247_m.jpg'
+                    imageURL: 'https://statics.dinoonline.com.ar/imagenes/full_600x600_ma/3264247_f.jpg'
                 },
                 {
                     description: 'Gran Compra cremoso 120gr vainilla',
