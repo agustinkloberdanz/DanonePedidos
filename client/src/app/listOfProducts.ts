@@ -392,20 +392,25 @@ export const listOfProducts = [
             name: 'Actimel',
             products: [
                 {
-                    description: 'Actimel botellita 100gr frutilla',
+                    description: 'Actimel 100gr frutilla',
                     sku: '9581-2',
                     imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/827452-800-auto?v=638558014639670000&width=800&height=auto&aspect=true'
                 },
                 {
-                    description: 'Actimel botellita 100gr multifruta',
+                    description: 'Actimel 100gr multifruta',
                     sku: '9581-85',
                     imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/827454-800-auto?v=638558014646400000&width=800&height=auto&aspect=true'
                 },
                 {
-                    description: 'Actimel botellita 100gr KIDS',
+                    description: 'Actimel 100gr KIDS',
                     sku: '9569-2',
                     imageURL: 'https://ardiaprod.vtexassets.com/arquivos/ids/337433/Leche-Fermentada-Kids-Sabor-Frutilla-Dulce-Actimel-100-Gr-_1.jpg?v=638665698624800000'
                 },
+                {
+                    description: 'Actimel 100gr citrus',
+                    sku: '9585-10',
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/858259/Citrus-X-100-Gr-Actimel-1-1035220.jpg?v=638768181730800000'
+                }
             ]
         }
     },
@@ -573,6 +578,16 @@ export const listOfProducts = [
                     description: 'Clásico queso 290gr light',
                     sku: '6143-0',
                     imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/791930-800-auto?v=638291825070800000&width=800&height=auto&aspect=true'
+                },
+                {
+                    description: 'Clásico queso 460gr',
+                    sku: '6152-0',
+                    imageURL: ''
+                },
+                {
+                    description: 'Clásico queso 460gr light',
+                    sku: '6151-0',
+                    imageURL: 'https://carrefourar.vtexassets.com/arquivos/ids/628781-800-450?v=638762040260700000&width=800&height=450&aspect=true'
                 },
                 {
                     description: 'Clásico queso 195gr',
