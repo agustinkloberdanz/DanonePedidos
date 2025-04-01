@@ -582,12 +582,12 @@ export const listOfProducts = [
                 {
                     description: 'Clásico queso 460gr',
                     sku: '6152-0',
-                    imageURL: ''
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/858258-800-auto?v=638768181727500000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico queso 460gr light',
                     sku: '6151-0',
-                    imageURL: 'https://carrefourar.vtexassets.com/arquivos/ids/628781-800-450?v=638762040260700000&width=800&height=450&aspect=true'
+                    imageURL: 'https://jumboargentina.vtexassets.com/arquivos/ids/858257-800-auto?v=638768181722670000&width=800&height=auto&aspect=true'
                 },
                 {
                     description: 'Clásico queso 195gr',
