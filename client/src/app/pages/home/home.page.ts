@@ -1,10 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
-import { listOfProducts } from '../../listOfProducts';
 import { AlertTools } from 'src/app/tools/AlertTools';
 import { ProductInCart } from 'src/app/models/product-in-cart';
-import { Product } from 'src/app/models/product';
+import { ProductDTO } from 'src/app/models/productDTO';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonInput } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { ProductsService } from 'src/app/services/products/products.service';
+import { BrandDTO } from 'src/app/models/brandDTO';
 
 @Component({
   selector: 'app-home',
@@ -13,14 +15,19 @@ import { IonInput } from '@ionic/angular';
   standalone: false,
 })
 export class HomePage {
-  @ViewChild('quantityInput') quantityInput!: IonInput;
 
-  onDidPresent() {
-    this.quantityInput.setFocus();
+  constructor(private tools: AlertTools, private fb: FormBuilder, private router: Router, private productsService: ProductsService) {
+    this.quantityForm = this.fb.group(this.quantityFormJSON)
   }
 
-  listOfProducts: any = listOfProducts
-  data: any
+  @ViewChild('quantityInput') quantityInput!: IonInput;
+
+  async onWillPresent() {
+    await this.quantityInput.setFocus();
+  }
+
+  listOfProducts: BrandDTO[] = []
+  data: BrandDTO[] = []
 
   productToAdd: ProductInCart = new ProductInCart()
   errorMessage: string = 'Ingrese una cantidad válida'
@@ -36,19 +43,31 @@ export class HomePage {
     quantity: ['', [Validators.required, Validators.pattern("^[0-9]*$")]]
   }
 
-  constructor(private tools: AlertTools, private fb: FormBuilder) {
-    this.data = [...listOfProducts]
-    this.quantityForm = this.fb.group(this.quantityFormJSON)
+  async ionViewWillEnter() {
+    await this.listProducts()
   }
 
-  ionViewWillEnter() {
-    console.log(this.data)
+  async listProducts() {
+    await this.tools.presentLoading('Cargando productos...')
+    this.productsService.getAllByBrand().subscribe(
+      async (res: any) => {
+        if (res.statusCode != 200) {
+          await this.tools.presentToast('Error al cargar los productos', 2000, 'danger');
+        } else {
+          this.listOfProducts = res.model;
+          this.data = this.listOfProducts
+        }
+        await this.tools.dismissLoading();
+      }, async (error) => {
+        await this.tools.dismissLoading();
+        await this.tools.presentToast('Error en el servidor', 2000, 'danger');
+      }
+    )
   }
 
-  openAddProductModal(product: ProductInCart) {
+  openAddProductModal(product: ProductDTO) {
     this.canDismiss = false
-    this.productToAdd.description = product.description
-    this.productToAdd.sku = product.sku
+    this.productToAdd.product = { ...product }
     this.productToAdd.quantity = ''
     this.quantityForm = this.fb.group(this.quantityFormJSON)
     this.isAddProductModalOpen = true
@@ -56,9 +75,9 @@ export class HomePage {
 
   closeAddProductModal() {
     this.canDismiss = true
-    this.productToAdd.description = ''
+    this.productToAdd.product!.description = ''
     this.productToAdd.quantity = ''
-    this.productToAdd.sku = ''
+    this.productToAdd.product!.sku = ''
     this.quantityForm = this.fb.group(this.quantityFormJSON)
     this.isAddProductModalOpen = false
   }
@@ -73,8 +92,14 @@ export class HomePage {
     if (this.quantityForm.valid) {
       const product: ProductInCart = {
         quantity: this.quantityForm.get('quantity')!.value,
-        description: this.productToAdd.description,
-        sku: this.productToAdd.sku
+        product: {
+          sku: this.productToAdd.product!.sku,
+          description: this.productToAdd.product!.description,
+          id: this.productToAdd.product!.id,
+          universalCode: this.productToAdd.product!.universalCode,
+          imageUrl: this.productToAdd.product!.imageUrl,
+          brand: this.productToAdd.product!.brand
+        }
       }
 
       this.order.push(product)
@@ -84,19 +109,19 @@ export class HomePage {
     }
   }
 
-  deleteProduct(product: ProductInCart) {
+  deleteProductFromOrder(product: ProductDTO) {
     if (confirm(`¿Desea eliminar ${product.description} del pedido?`)) {
-      this.order = this.order.filter(item => item.sku !== product.sku)
+      this.order = this.order.filter(item => item.product!.sku !== product.sku)
       this.tools.presentToast('Producto eliminado del pedido')
     }
     this.setOrder()
   }
 
   modifyQuantity(product: ProductInCart) {
-    const quantity = prompt(`Modificar pedido\n${product.description} ${product.quantity} unidades\nNueva cantidad de unidades: `, product.quantity)
+    const quantity = prompt(`Modificar pedido\n${product.product!.description} ${product.quantity} unidades\nNueva cantidad de unidades: `, product.quantity)
     if (quantity !== product.quantity && quantity !== null) {
       if (quantity !== '' && parseInt(quantity) > 0) {
-        this.order[this.order.findIndex(item => item.sku === product.sku)].quantity = quantity.replace(/\s+/g, '')
+        this.order[this.order.findIndex(item => item.product!.sku === product.product!.sku)].quantity = quantity.replace(/\s+/g, '')
         this.tools.presentToast('Cantidad modificada')
       }
       else this.tools.presentToast('Error - Ingrese una cantidad de unidades válida')
@@ -104,9 +129,9 @@ export class HomePage {
     this.setOrder()
   }
 
-  checkIsInOrder(product: Product): boolean {
+  checkIsInOrder(product: ProductDTO): boolean {
     var flag = false
-    this.order.map(item => { if (item.sku === product.sku) flag = true })
+    this.order.map(item => { if (item.product!.sku === product.sku) flag = true })
     return flag
   }
 
@@ -125,7 +150,7 @@ export class HomePage {
   }
 
   generateStringFromArray(array: ProductInCart[]) {
-    return array.map(product => `${product.sku} (${product.quantity}.`).join("\n");
+    return array.map(product => `${product.product!.sku} (${product.quantity}.`).join("\n");
   }
 
   deleteOrder() {
@@ -138,9 +163,12 @@ export class HomePage {
   }
 
   handleChange(e: any) {
-    const brand = e.detail.value
-    if (brand === 'all') this.data = [...listOfProducts]
-    else this.data = listOfProducts.filter(item => item.brand.name === brand)
+    let filterBrand = e.detail.value
+    if (filterBrand === 'all') this.data = [...this.listOfProducts]
+    else {
+      this.data = []
+      this.listOfProducts.map(brand => { if (brand.name === filterBrand) this.data.push(brand) })
+    }
   }
 
   showCencosudDates() {
@@ -154,9 +182,9 @@ export class HomePage {
     alert(`Hoy sacamos\nYogures y leches: ${yogur.getDate()}/${yogur.getMonth() + 1}\nPostres y quesos: ${dessert.getDate()}/${dessert.getMonth() + 1}`)
   }
 
-  getQuantity(product: Product) {
+  getQuantity(product: ProductDTO) {
     var quantity = ''
-    this.order.map(item => { if (item.sku === product.sku) { quantity = item.quantity } })
+    this.order.map(item => { if (item.product!.sku === product.sku) { quantity = item.quantity || '' } })
     return quantity
   }
 
@@ -168,5 +196,9 @@ export class HomePage {
     let order = JSON.parse(localStorage.getItem('order')!)
     if (order) return order
     else return []
+  }
+
+  supervisorPage() {
+    this.router.navigateByUrl('supervisor')
   }
 }

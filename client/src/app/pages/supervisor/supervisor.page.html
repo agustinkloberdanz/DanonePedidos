@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>GRUPO DANONE</ion-title>
+
+    <ion-buttons slot="start">
+      <ion-button color="primary" (click)="homePage()">
+        <ion-icon size="large" name="list"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" mode="ios">
+  <ion-button class="add-product-button" (click)="openAddProductModal()" expand="block" color="success">
+    Crear producto
+    <ion-icon slot="icon-only" name="add"></ion-icon>
+  </ion-button>
+
+  @for (brand of data; track brand) {
+  <ion-toolbar color="primary">
+    <ion-title>{{brand.name}}</ion-title>
+  </ion-toolbar>
+
+  <div class="products">
+    <ion-card *ngFor="let product of brand.products" class="product">
+      <ion-img [src]="product.imageUrl" [alt]="product.description"></ion-img>
+      <ion-card-header>
+        <ion-card-subtitle>{{product.description}}</ion-card-subtitle>
+        <ion-card-title>
+          <ion-button size="default" expand="block" shape="round" (click)="openUpdateProductModal(product)"
+            color="warning">
+            <ion-icon slot="icon-only" name="pencil"></ion-icon>
+          </ion-button>
+
+          <ion-button size="default" expand="block" shape="round" (click)="deleteproductActionButton(product)"
+            color="danger">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-button>
+        </ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </div>
+  }
+
+  <ion-modal [isOpen]="isProductModalOpen" (willDismiss)="isProductModalOpen = false">
+    <ng-template>
+      <app-product-modal [product]="product" (confirm)="listProducts()"></app-product-modal>
+    </ng-template>
+  </ion-modal>
+
+</ion-content>

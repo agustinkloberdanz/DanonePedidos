@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'supervisor',
+    loadChildren: () => import('./pages/supervisor/supervisor.module').then( m => m.SupervisorPageModule)
+  },
 ];
 
 @NgModule({

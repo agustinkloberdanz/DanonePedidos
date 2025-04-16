@@ -1,43 +1,52 @@
 import { Injectable } from "@angular/core";
-import { ToastController, LoadingController } from "@ionic/angular";
+import { ToastController, LoadingController, AlertController } from "@ionic/angular";
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 
 export class AlertTools {
-    constructor(
-        private toastController: ToastController,
-        private loadingController: LoadingController
-    ) { }
+  private loading: HTMLIonLoadingElement | null = null;
 
-    async presentToast(message: string) {
-        await this.toastController.create({
-            message: message,
-            duration: 3500,
-            position: 'bottom',
-        }).then(res => res.present())
+  constructor(
+    private alertController: AlertController,
+    private toastController: ToastController,
+    private loadingController: LoadingController
+  ) { }
+
+  async presentAlert(header: string, message: string, buttons: any[] = ['OK']): Promise<void> {
+    const alert = await this.alertController.create({
+      header,
+      message,
+      buttons
+    });
+    await alert.present();
+  }
+
+  async presentToast(message: string, duration: number = 2000, color: string = 'medium'): Promise<void> {
+    const toast = await this.toastController.create({
+      message,
+      duration,
+      color,
+      position: 'bottom'
+    });
+    await toast.present();
+  }
+
+  async presentLoading(message: string = 'Cargando...'): Promise<void> {
+    if (!this.loading) {
+      this.loading = await this.loadingController.create({
+        message,
+        spinner: 'crescent'
+      });
+      await this.loading.present();
     }
+  }
 
-    async makeLoadingAnimation() {
-        const loading = await this.loadingController.create({
-            spinner: 'circular',
-            message: 'Cargando . . .'
-        })
-
-        loading.present()
+  async dismissLoading(): Promise<void> {
+    if (this.loading) {
+      await this.loading.dismiss();
+      this.loading = null;
     }
-
-    async closeLoader() {
-        this.checkAndCloseLoader()
-        setTimeout(() => this.checkAndCloseLoader(), 3000)
-    }
-
-    async checkAndCloseLoader() {
-        const loader = this.loadingController.getTop()
-
-        if (loader !== undefined) {
-            await this.loadingController.dismiss()
-        }
-    }
+  }
 }

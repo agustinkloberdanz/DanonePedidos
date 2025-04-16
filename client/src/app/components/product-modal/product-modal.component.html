@@ -1,0 +1,56 @@
+<ion-header [translucent]="true" mode="ios">
+    <ion-toolbar>
+        <ion-title *ngIf="type == 'add'">Agregar producto</ion-title>
+        <ion-title *ngIf="type == 'update'">Modificar producto</ion-title>
+
+        <ion-buttons slot="end">
+            <ion-button color="primary" (click)="closeModal()">
+                <ion-icon size="large" name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+
+    </ion-toolbar>
+</ion-header>
+
+<div class="container">
+    <ion-item>
+        <ion-select class="select" [(ngModel)]="formModel.brand" interface="popover"
+            placeholder="Selecciona una marca">
+            <ion-select-option value="Serenito">Serenito</ion-select-option>
+            <ion-select-option value="Danette">Danette</ion-select-option>
+            <ion-select-option value="Danonino">Danonino</ion-select-option>
+            <ion-select-option value="Yogurisimo">Yogurisimo</ion-select-option>
+            <ion-select-option value="Ser">Ser</ion-select-option>
+            <ion-select-option value="Activia">Activia</ion-select-option>
+            <ion-select-option value="Actimel">Actimel</ion-select-option>
+            <ion-select-option value="La Serenísima Clásico">La Serenísima Clásico</ion-select-option>
+            <ion-select-option value="Casancrem">Casancrem</ion-select-option>
+            <ion-select-option value="Cindor">Cindor</ion-select-option>
+            <ion-select-option value="Silk">Silk</ion-select-option>
+            <ion-select-option value="Gran Compra">Gran Compra</ion-select-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="floating">Descripción</ion-label>
+        <ion-input type="text" [(ngModel)]="formModel.description"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="floating">Código universal</ion-label>
+        <ion-input type="text" [(ngModel)]="formModel.universalCode"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="floating">SKU</ion-label>
+        <ion-input type="string" [(ngModel)]="formModel.sku"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="floating">Imagen URL</ion-label>
+        <ion-input type="text" [(ngModel)]="formModel.imageUrl"></ion-input>
+    </ion-item>
+
+
+    <ion-button (click)="submit()" class="submit-button" expand="block" color="success">Aceptar</ion-button>
+</div>

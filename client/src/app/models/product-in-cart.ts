@@ -1,5 +1,6 @@
+import { ProductDTO } from "./productDTO";
+
 export class ProductInCart {
-    description: string = ''
-    sku: string = ''
-    quantity: string = ''
+    product?: ProductDTO
+    quantity?: string = ''
 }

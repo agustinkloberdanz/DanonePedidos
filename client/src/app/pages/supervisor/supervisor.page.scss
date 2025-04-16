@@ -1,0 +1,17 @@
+.product {
+    text-align: center;
+    width: 90%;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+}
+
+.add-product-button {
+    margin-top: 2vh;
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+}
