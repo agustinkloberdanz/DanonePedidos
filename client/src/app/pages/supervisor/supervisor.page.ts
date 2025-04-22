@@ -24,8 +24,8 @@ export class SupervisorPage {
     await this.listProducts()
   }
 
-  homePage() {
-    this.router.navigateByUrl('home')
+  createOrderPage() {
+    this.router.navigateByUrl('create-order')
   }
 
   openAddProductModal() {

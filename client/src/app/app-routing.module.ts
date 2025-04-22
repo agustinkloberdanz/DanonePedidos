@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'supervisor',
     loadChildren: () => import('./pages/supervisor/supervisor.module').then( m => m.SupervisorPageModule)
   },
+  {
+    path: 'create-order',
+    loadChildren: () => import('./pages/create-order/create-order.module').then( m => m.CreateOrderPageModule)
+  },
 ];
 
 @NgModule({

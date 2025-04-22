@@ -1,122 +1,12 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>GRUPO DANONE</ion-title>
-
-    <ion-buttons slot="start">
-      <ion-button color="primary" (click)="supervisorPage()">
-        <ion-icon size="large" name="list"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-
-    <ion-buttons slot="end">
-      <ion-button color="primary" (click)="showCart()">
-        <ion-badge>{{order.length}}</ion-badge>
-        <ion-icon size="large" name="cart"></ion-icon>
-      </ion-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" mode="ios">
-  <ion-button (click)="showCencosudDates()" expand="block" color="warning">Retiros cencosud</ion-button>
-
-  <ion-item color="none">
-    <ion-select class="select" (ionChange)="handleChange($event)" value="all" interface="popover">
-      <ion-select-option value="all">Todos</ion-select-option>
-      @for (brand of listOfProducts; track brand) {
-      <ion-select-option value={{brand.name}}>{{brand.name}}</ion-select-option>
-      }
-    </ion-select>
-  </ion-item>
-
-  @for (brand of data; track brand) {
-  <ion-toolbar color="primary">
-    <ion-title>{{brand.name}}</ion-title>
-  </ion-toolbar>
-
-  <div class="products">
-    <ion-card *ngFor="let product of brand.products" class="product">
-      <ion-img [src]="product.imageUrl" [alt]="product.description"></ion-img>
-      <ion-card-header>
-        <ion-card-subtitle>{{product.description}}</ion-card-subtitle>
-        <ion-card-title>
-          @if(checkIsInOrder(product)) {
-          <ion-button size="default" (click)="deleteProductFromOrder(product)" expand="block" color="danger">
-            {{getQuantity(product)}}<ion-icon slot="icon-only" name="trash"></ion-icon>
-          </ion-button>
-          } @else {
-          <ion-button size="default" shape="round" (click)="openAddProductModal(product)" expand="block"
-            color="success">
-            <ion-icon slot="icon-only" name="add"></ion-icon>
-          </ion-button>
-          }
-        </ion-card-title>
-      </ion-card-header>
-    </ion-card>
+  <div class="container">
+    <ion-button (click)="createOrderPage()" color="primary">Hacer pedido</ion-button>
+    <ion-button (click)="supervisorPage()" color="success">Gestionar productos</ion-button>
   </div>
-  }
-
-  <ion-modal id="add-product-modal" [isOpen]="isAddProductModalOpen" [canDismiss]="canDismiss"
-    (willPresent)="onWillPresent()">
-    <ng-template>
-      <div class="wrapper">
-        <h1>{{productToAdd.product!.description}}</h1>
-
-        <form [formGroup]="quantityForm" (keydown)="keyDownFunction($event)">
-          <ion-item>
-            <ion-input #quantityInput color="medium" clearInput="true" [errorText]="errorMessage" inputmode="numeric"
-              formControlName="quantity" placeholder="Cantidad de unidades"></ion-input>
-          </ion-item>
-
-          <ion-toolbar color="none">
-            <ion-button size="default" slot="start" (click)="closeAddProductModal()" fill="clear">Cancelar</ion-button>
-            <ion-button size="default" slot="end" (click)="addProductToCart()" fill="solid"
-              shape="round">Agregar</ion-button>
-          </ion-toolbar>
-        </form>
-      </div>
-    </ng-template>
-  </ion-modal>
-
-  <ion-modal [isOpen]="isOrderModalOpen">
-    <ng-template>
-      <ion-header [translucent]="true">
-        <ion-toolbar>
-          <ion-title>Pedido</ion-title>
-          <ion-buttons slot="end">
-            <ion-button (click)="closeCart()">
-              <ion-icon slot="icon-only" name="close"></ion-icon>
-            </ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content>
-        <ion-button *ngIf="order.length !== 0" (click)="deleteOrder()" color="danger" expand="block" fill="outline"
-          shape="round">
-          Borrar pedido
-        </ion-button>
-
-        <ion-button *ngIf="order.length !== 0" (click)="copyOrder()" color="warning" expand="block" shape="round">
-          Copiar pedido
-        </ion-button>
-
-        <ion-title *ngIf="order.length === 0" color="danger">No hay productos en el pedido</ion-title>
-
-        <ion-list>
-          <ion-item *ngFor="let product of order">
-            <ion-label>{{product.product!.description}}</ion-label>
-            <ion-label>{{product.quantity}} unidades</ion-label>
-
-            <ion-button size="default" size="default" (click)="modifyQuantity(product)" color="warning">
-              <ion-icon slot="icon-only" name="pencil"></ion-icon>
-            </ion-button>
-            <ion-button size="default" (click)="deleteProductFromOrder(product.product!)" color="danger">
-              <ion-icon slot="icon-only" name="trash"></ion-icon>
-            </ion-button>
-
-          </ion-item>
-        </ion-list>
-      </ion-content>
-    </ng-template>
-  </ion-modal>
 </ion-content>
