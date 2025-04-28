@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ProductDTO } from 'src/app/models/productDTO';
 import { ProductsService } from 'src/app/services/products/products.service';
 import { AlertTools } from 'src/app/tools/AlertTools';
-
+import { listOfProducts } from 'src/app/listOfProducts';
 
 @Component({
   selector: 'app-supervisor',
@@ -81,20 +81,33 @@ export class SupervisorPage {
   }
 
   async listProducts() {
-    await this.tools.presentLoading('Cargando productos...')
-    this.productsService.getAllByBrand().subscribe(
-      async (res: any) => {
-        if (res.statusCode != 200) {
-          await this.tools.presentToast('Error al cargar los productos', 2000, 'danger');
-        } else {
-          this.data = res.model;
-        }
-        await this.tools.dismissLoading();
-      }, async (error) => {
-        await this.tools.dismissLoading();
-        await this.tools.presentToast('Error en el servidor', 2000, 'danger');
-      }
-    )
+
+    // Cargar productos desde json local
+    this.data = listOfProducts.map(item => ({
+      name: item.brand.name,
+      products: item.brand.products.map(product => ({
+        brand: product.brand,
+        description: product.description,
+        sku: product.sku,
+        imageUrl: product.imageUrl
+      }))
+    }));
+
+    // Cargar productos desde el servicio
+    //   await this.tools.presentLoading('Cargando productos...')
+    //   this.productsService.getAllByBrand().subscribe(
+    //     async (res: any) => {
+    //       if (res.statusCode != 200) {
+    //         await this.tools.presentToast('Error al cargar los productos', 2000, 'danger');
+    //       } else {
+    //         this.data = res.model;
+    //       }
+    //       await this.tools.dismissLoading();
+    //     }, async (error) => {
+    //       await this.tools.dismissLoading();
+    //       await this.tools.presentToast('Error en el servidor', 2000, 'danger');
+    //     }
+    //   )
   }
 
 }

@@ -7,6 +7,7 @@ import { ProductInCart } from 'src/app/models/product-in-cart';
 import { ProductDTO } from 'src/app/models/productDTO';
 import { ProductsService } from 'src/app/services/products/products.service';
 import { AlertTools } from 'src/app/tools/AlertTools';
+import { listOfProducts } from 'src/app/listOfProducts';
 
 @Component({
   selector: 'app-create-order',
@@ -47,21 +48,35 @@ export class CreateOrderPage {
   }
 
   async listProducts() {
-    await this.tools.presentLoading('Cargando productos...')
-    this.productsService.getAllByBrand().subscribe(
-      async (res: any) => {
-        if (res.statusCode != 200) {
-          await this.tools.presentToast('Error al cargar los productos', 2000, 'danger');
-        } else {
-          this.listOfProducts = res.model;
-          this.data = this.listOfProducts
-        }
-        await this.tools.dismissLoading();
-      }, async (error) => {
-        await this.tools.dismissLoading();
-        await this.tools.presentToast('Error en el servidor', 2000, 'danger');
-      }
-    )
+
+    // Cargar productos desde json local
+    this.listOfProducts = listOfProducts.map(item => ({
+      name: item.brand.name,
+      products: item.brand.products.map(product => ({
+        brand: product.brand,
+        description: product.description,
+        sku: product.sku,
+        imageUrl: product.imageUrl
+      }))
+    }));
+    this.data = this.listOfProducts
+
+    // Cargar productos desde el servicio
+    // await this.tools.presentLoading('Cargando productos...')
+    // this.productsService.getAllByBrand().subscribe(
+    //   async (res: any) => {
+    //     if (res.statusCode != 200) {
+    //       await this.tools.presentToast('Error al cargar los productos', 2000, 'danger');
+    //     } else {
+    //       this.listOfProducts = res.model;
+    //       this.data = this.listOfProducts
+    //     }
+    //     await this.tools.dismissLoading();
+    //   }, async (error) => {
+    //     await this.tools.dismissLoading();
+    //     await this.tools.presentToast('Error en el servidor', 2000, 'danger');
+    //   }
+    // )
   }
 
   openAddProductModal(product: ProductDTO) {
