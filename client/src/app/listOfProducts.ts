@@ -7,13 +7,13 @@ export const listOfProducts = [
                     brand: 'Serenito',
                     description: 'Serenito 95gr vainilla',
                     sku: '9141-1',
-                    imageUrl: 'https://jumboargentina.vtexassets.com/arquivos/ids/818340-800-auto?v=638482959191000000&width=800&height=auto&aspect=true'
+                    imageURL: "https://carrefourar.vtexassets.com/arquivos/ids/642966-1600-auto?v=638802387376670000&width=1600&height=auto&aspect=true",
                 },
                 {
                     brand: 'Serenito',
                     description: 'Serenito 100gr dulce de leche',
                     sku: '9143-6',
-                    imageUrl: 'https://jumboargentina.vtexassets.com/arquivos/ids/818343-800-auto?v=638482959200230000&width=800&height=auto&aspect=true'
+                    imageURL: "https://carrefourar.vtexassets.com/arquivos/ids/642960-1600-auto?v=638802386529100000&width=1600&height=auto&aspect=true",
                 },
                 {
                     brand: 'Serenito',
