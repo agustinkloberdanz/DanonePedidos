@@ -1,15 +1,61 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginDTO } from 'src/app/models/loginDTO';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { UserService } from 'src/app/services/users/user.service';
+import { AlertTools } from 'src/app/tools/AlertTools';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
 
-  constructor() { }
+  user: LoginDTO = new LoginDTO();
 
-  ngOnInit() {
+  constructor(private tools: AlertTools, private userService: UserService, private router: Router, private authService: AuthService) { }
+
+  async ionViewWillEnter() {
+    await this.getData()
+  }
+
+  async getData() {
+    await this.tools.presentLoading();
+
+    this.userService.getData().subscribe(
+      async (res: any) => {
+        if (res.statusCode == 200) this.router.navigateByUrl('home')
+        else localStorage.clear()
+
+        this.tools.dismissLoading()
+      }, 
+      async (err) => {
+        localStorage.clear()
+        this.tools.dismissLoading()        
+      }
+    )
+  }
+
+  async login() {
+    await this.tools.presentLoading('Iniciando sesión...');
+
+    this.authService.login(this.user).subscribe(
+      async (res: any) => {
+        if (res.statusCode != 200) await this.tools.presentAlert('Error', res.message);
+
+        else {
+          localStorage.setItem('Token', res.model)
+          this.router.navigateByUrl('home')
+        }
+
+        await this.tools.dismissLoading()
+      },
+      async (err) => {
+        await this.tools.presentAlert('Error', err.message);
+        await this.tools.dismissLoading()
+      }
+    )
   }
 
 }

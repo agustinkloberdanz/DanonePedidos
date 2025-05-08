@@ -10,4 +10,12 @@ export class UserService extends MainService {
   register(registerDTO: RegisterDTO) {
     return this.http.post(`${this.baseRoute}Users/register`, registerDTO);
   }
+
+  getData() {
+    var token = localStorage.getItem('Token');
+
+    var headers = this.createHeader(token);
+
+    return this.http.get(`${this.baseRoute}Users/data`, { headers });
+  }
 }
