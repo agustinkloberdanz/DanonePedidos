@@ -4,6 +4,7 @@ import { ProductDTO } from 'src/app/models/productDTO';
 import { ProductService } from 'src/app/services/products/product.service';
 import { AlertTools } from 'src/app/tools/AlertTools';
 import { listOfProducts } from 'src/app/listOfProducts';
+import { UserService } from 'src/app/services/users/user.service';
 
 @Component({
   selector: 'app-supervisor',
@@ -12,7 +13,7 @@ import { listOfProducts } from 'src/app/listOfProducts';
 })
 export class SupervisorPage {
 
-  constructor(private router: Router, private productsService: ProductService, private tools: AlertTools) { }
+  constructor(private router: Router, private productsService: ProductService, private tools: AlertTools, private userService: UserService) { }
 
   data: any[] = []
 
@@ -21,7 +22,26 @@ export class SupervisorPage {
   isProductModalOpen: boolean = false
 
   async ionViewWillEnter() {
+    await this.getData()
     await this.listProducts()
+  }
+
+  async getData() {
+    await this.tools.presentLoading();
+
+    this.userService.getData().subscribe(
+      async (res: any) => {
+        if (res.statusCode != 200) this.router.navigateByUrl('login')
+        else if (res.model.role != 0) this.router.navigateByUrl('home')
+
+        this.tools.dismissLoading()
+      },
+      async (err) => {
+        localStorage.clear()
+        this.tools.dismissLoading()
+        this.router.navigateByUrl('login')
+      }
+    )
   }
 
   createOrderPage() {

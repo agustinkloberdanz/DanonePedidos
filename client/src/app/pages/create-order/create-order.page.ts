@@ -8,6 +8,7 @@ import { ProductDTO } from 'src/app/models/productDTO';
 import { ProductService } from 'src/app/services/products/product.service';
 import { AlertTools } from 'src/app/tools/AlertTools';
 import { listOfProducts } from 'src/app/listOfProducts';
+import { UserService } from 'src/app/services/users/user.service';
 
 @Component({
   selector: 'app-create-order',
@@ -16,7 +17,7 @@ import { listOfProducts } from 'src/app/listOfProducts';
 })
 export class CreateOrderPage {
 
-  constructor(private tools: AlertTools, private fb: FormBuilder, private router: Router, private productsService: ProductService) {
+  constructor(private userService: UserService, private tools: AlertTools, private fb: FormBuilder, private router: Router, private productsService: ProductService) {
     this.quantityForm = this.fb.group(this.quantityFormJSON)
   }
 
@@ -44,11 +45,29 @@ export class CreateOrderPage {
   }
 
   async ionViewWillEnter() {
+    await this.getData()
     await this.listProducts()
   }
 
+  async getData() {
+    await this.tools.presentLoading();
+
+    this.userService.getData().subscribe(
+      async (res: any) => {
+        if (res.statusCode != 200) this.router.navigateByUrl('login')
+          
+        this.tools.dismissLoading()
+      },
+      async (err) => {
+        localStorage.clear()
+        this.tools.dismissLoading()
+        this.router.navigateByUrl('login')
+      }
+    )
+  }
+
   async listProducts() {
-    
+
     // Cargar productos desde json local
     // this.listOfProducts = listOfProducts.map(item => ({
     //   name: item.brand.name,

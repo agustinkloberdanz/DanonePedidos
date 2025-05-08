@@ -6,7 +6,8 @@
 
 <ion-content [fullscreen]="true" mode="ios">
   <div class="container">
-    <ion-button (click)="createOrderPage()" color="primary">Hacer pedido</ion-button>
-    <ion-button (click)="supervisorPage()" color="success">Gestionar productos</ion-button>
+    <ion-button (click)="createOrderPage()" >Hacer pedido</ion-button>
+    <ion-button *ngIf="user.role == 0" (click)="supervisorPage()">Gestionar productos</ion-button>
+    <ion-button (click)="myProfile()">Mis datos</ion-button>
   </div>
 </ion-content>
