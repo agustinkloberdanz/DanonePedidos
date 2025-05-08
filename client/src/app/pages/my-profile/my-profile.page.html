@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Mi Perfil</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="content">
+
+    <ion-toolbar color="none">
+      <ion-buttons slot="start">
+        <ion-button color="danger" (click)="deleteUserActionButton()">
+          Eliminar cuenta<ion-icon name="trash"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+
+      <ion-buttons slot="end">
+        <ion-button color="warning" (click)="modifyFields()">
+          Modificar datos<ion-icon name="pencil"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+
+    <ion-item title="El campo email no se puede modificar" class="input-item">
+      <ion-label>Email: </ion-label>
+      <ion-input [disabled]="true" type="email" [(ngModel)]="user.email"></ion-input>
+    </ion-item>
+
+    <ion-item class="input-item">
+      <ion-label>Nombre: </ion-label>
+      <ion-input [disabled]="arefieldsDisabled" type="text" [(ngModel)]="user.firstName"></ion-input>
+    </ion-item>
+
+    <ion-item class="input-item">
+      <ion-label>Apellido: </ion-label>
+      <ion-input [disabled]="arefieldsDisabled" type="text" [(ngModel)]="user.lastName"></ion-input>
+    </ion-item>
+
+    <ion-button class="confirm-button" (click)="updateUser()" [disabled]="arefieldsDisabled" expand="block" fill="solid"
+      shape="round">
+      Aceptar
+    </ion-button>
+
+  </div>
+</ion-content>

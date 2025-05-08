@@ -41,5 +41,5 @@ export class HomePage {
 
   supervisorPage() { this.router.navigateByUrl('supervisor') }
 
-  myProfile() { this.router.navigateByUrl('my-profile') }
+  myProfilePage() { this.router.navigateByUrl('my-profile') }
 }

@@ -29,11 +29,11 @@ export class RegisterPage {
         if (res.statusCode == 200) this.router.navigateByUrl('home')
         else localStorage.clear()
 
-        this.tools.dismissLoading()
+        await this.tools.dismissLoading()
       }, 
       async (err) => {
         localStorage.clear()
-        this.tools.dismissLoading()        
+        await  this.tools.dismissLoading()        
       }
     )
   }
@@ -62,7 +62,7 @@ export class RegisterPage {
               await this.tools.dismissLoading()
             },
             async (err) => {
-              await this.tools.presentAlert('Error', err.message);
+              await this.tools.presentAlert('Error', 'Error al iniciar sesión');
               await this.tools.dismissLoading()
             }
           )
@@ -71,7 +71,7 @@ export class RegisterPage {
         await this.tools.dismissLoading()
       },
       async (err) => {
-        await this.tools.presentAlert('Error', err.error.message);
+        await this.tools.presentAlert('Error', 'Error al registrar el usuario');
         await this.tools.dismissLoading()
       }
     )
