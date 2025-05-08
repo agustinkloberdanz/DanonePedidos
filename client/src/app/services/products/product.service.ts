@@ -6,7 +6,7 @@ import { ProductDTO } from 'src/app/models/productDTO';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsService extends MainService {
+export class ProductService extends MainService {
 
   GetAll() {
     var token = localStorage.getItem('Token');

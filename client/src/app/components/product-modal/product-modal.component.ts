@@ -3,7 +3,7 @@ import { ProductDTO } from 'src/app/models/productDTO';
 import { AddProductDTO } from 'src/app/models/addProductDTO';
 import { ModalController } from '@ionic/angular';
 import { AlertTools } from 'src/app/tools/AlertTools';
-import { ProductsService } from 'src/app/services/products/products.service';
+import { ProductService } from 'src/app/services/products/product.service';
 
 @Component({
   selector: 'app-product-modal',
@@ -12,7 +12,7 @@ import { ProductsService } from 'src/app/services/products/products.service';
 })
 export class ProductModalComponent implements OnInit {
 
-  constructor(private modalController: ModalController, private tools: AlertTools, private productsService: ProductsService) { }
+  constructor(private modalController: ModalController, private tools: AlertTools, private productsService: ProductService) { }
 
   ngOnInit(): void {
     if (this.product()?.sku) {

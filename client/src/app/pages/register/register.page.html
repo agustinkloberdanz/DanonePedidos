@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>GRUPO DANONE</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" mode="ios">
+  <div class="content">
+
+    <ion-label class="title">
+      <h1>Registrate</h1>
+    </ion-label>
+
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input type="text" [(ngModel)]="user.firstName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Apellido</ion-label>
+        <ion-input type="text" [(ngModel)]="user.lastName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" [(ngModel)]="user.email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Repetir contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="passwordCheck"></ion-input>
+      </ion-item>
+
+    <div class="button-container">
+      <ion-button expand="full" (click)="register()">Register</ion-button>
+    </div>
+
+    <div class="footer">
+      <p>¿Ya tienes cuenta? <a routerLink="/login">Iniciar sesion</a></p>
+    </div>
+  </div>
+</ion-content>

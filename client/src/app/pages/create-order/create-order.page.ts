@@ -5,7 +5,7 @@ import { IonInput } from '@ionic/angular';
 import { BrandDTO } from 'src/app/models/brandDTO';
 import { ProductInCart } from 'src/app/models/product-in-cart';
 import { ProductDTO } from 'src/app/models/productDTO';
-import { ProductsService } from 'src/app/services/products/products.service';
+import { ProductService } from 'src/app/services/products/product.service';
 import { AlertTools } from 'src/app/tools/AlertTools';
 import { listOfProducts } from 'src/app/listOfProducts';
 
@@ -16,7 +16,7 @@ import { listOfProducts } from 'src/app/listOfProducts';
 })
 export class CreateOrderPage {
 
-  constructor(private tools: AlertTools, private fb: FormBuilder, private router: Router, private productsService: ProductsService) {
+  constructor(private tools: AlertTools, private fb: FormBuilder, private router: Router, private productsService: ProductService) {
     this.quantityForm = this.fb.group(this.quantityFormJSON)
   }
 

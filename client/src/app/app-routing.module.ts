@@ -18,7 +18,15 @@ const routes: Routes = [
   {
     path: 'create-order',
     loadChildren: () => import('./pages/create-order/create-order.module').then( m => m.CreateOrderPageModule)
+  },  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
+  {
+    path: 'register',
+    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+  },
+
 ];
 
 @NgModule({
