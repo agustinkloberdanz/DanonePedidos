@@ -7,7 +7,6 @@ import { ProductInCart } from 'src/app/models/product-in-cart';
 import { ProductDTO } from 'src/app/models/productDTO';
 import { ProductService } from 'src/app/services/products/product.service';
 import { AlertTools } from 'src/app/tools/AlertTools';
-import { listOfProducts } from 'src/app/listOfProducts';
 import { UserService } from 'src/app/services/users/user.service';
 
 @Component({
@@ -67,19 +66,6 @@ export class CreateOrderPage {
   }
 
   async listProducts() {
-
-    // Cargar productos desde json local
-    // this.listOfProducts = listOfProducts.map(item => ({
-    //   name: item.brand.name,
-    //   products: item.brand.products.map(product => ({
-    //     brand: product.brand,
-    //     description: product.description,
-    //     sku: product.sku,
-    //     imageUrl: product.imageUrl
-    //   }))
-    // }));
-    // this.data = this.listOfProducts
-
     // Cargar productos desde el servicio
     await this.tools.presentLoading('Cargando productos...')
     this.productsService.getAllByBrand().subscribe(
