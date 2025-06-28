@@ -118,10 +118,14 @@ export class CreateOrderPage {
         }
       }
 
-      if (this.checkIsInOrder(product.product!)) this.deleteProductFromOrder(product.product!)
+      if (this.checkIsInOrder(product.product!)) {
+        this.order[this.order.findIndex(item => item.product!.sku === product.product!.sku)].quantity = product.quantity!.replace(/\s+/g, '')
+        this.tools.presentToast('Cantidad modificada')
+      } else {
+        this.order.push(product)
+        this.tools.presentToast('Producto agregado al pedido')
+      }
 
-      this.order.push(product)
-      this.tools.presentToast('Producto agregado al pedido')
       this.closeAddProductModal()
       this.setOrder()
     }
@@ -148,18 +152,6 @@ export class CreateOrderPage {
     this.tools.presentToast('Producto eliminado del pedido')
     this.setOrder()
   }
-
-  // modifyQuantity(product: ProductInCart) {
-  //   const quantity = prompt(`Modificar pedido\n${product.product!.description} ${product.quantity} unidades\nNueva cantidad de unidades: `, product.quantity)
-  //   if (quantity !== product.quantity && quantity !== null) {
-  //     if (quantity !== '' && parseInt(quantity) > 0) {
-  //       this.order[this.order.findIndex(item => item.product!.sku === product.product!.sku)].quantity = quantity.replace(/\s+/g, '')
-  //       this.tools.presentToast('Cantidad modificada')
-  //     }
-  //     else this.tools.presentToast('Error - Ingrese una cantidad de unidades válida')
-  //   }
-  //   this.setOrder()
-  // }
 
   modifyQuantity(product: ProductInCart) {
     this.openAddProductModal(product.product!)
