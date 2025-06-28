@@ -41,7 +41,7 @@
         <ion-card-subtitle>{{product.description}}</ion-card-subtitle>
         <ion-card-title>
           @if(checkIsInOrder(product)) {
-          <ion-button size="default" (click)="deleteProductFromOrder(product)" expand="block" color="danger">
+          <ion-button size="default" (click)="deleteProductActionButton(product)" expand="block" color="danger">
             {{getQuantity(product)}}<ion-icon slot="icon-only" name="trash"></ion-icon>
           </ion-button>
           } @else {
@@ -91,7 +91,7 @@
         </ion-toolbar>
       </ion-header>
       <ion-content>
-        <ion-button *ngIf="order.length !== 0" (click)="deleteOrder()" color="danger" expand="block" fill="outline"
+        <ion-button *ngIf="order.length !== 0" (click)="deleteOrderActionButton()" color="danger" expand="block" fill="outline"
           shape="round">
           Borrar pedido
         </ion-button>
@@ -110,7 +110,7 @@
             <ion-button size="default" size="default" (click)="modifyQuantity(product)" color="warning">
               <ion-icon slot="icon-only" name="pencil"></ion-icon>
             </ion-button>
-            <ion-button size="default" (click)="deleteProductFromOrder(product.product!)" color="danger">
+            <ion-button size="default" (click)="deleteProductActionButton(product.product!)" color="danger">
               <ion-icon slot="icon-only" name="trash"></ion-icon>
             </ion-button>
 

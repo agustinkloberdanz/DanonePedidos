@@ -32,7 +32,7 @@ export class CreateOrderPage {
   productToAdd: ProductInCart = new ProductInCart()
   errorMessage: string = 'Ingrese una cantidad válida'
 
-  order: ProductInCart[] = this.getOrder()
+  order: ProductInCart[] = []
 
   isOrderModalOpen: boolean = false
   isAddProductModalOpen: boolean = false
@@ -54,8 +54,8 @@ export class CreateOrderPage {
     this.userService.getData().subscribe(
       async (res: any) => {
         if (res.statusCode != 200) await this.router.navigateByUrl('login')
-
         await this.tools.dismissLoading()
+        if (localStorage.getItem('order') != '[]') await this.continueLastOrder()
       },
       async (err) => {
         await this.tools.logout()
@@ -125,11 +125,25 @@ export class CreateOrderPage {
     }
   }
 
+  async deleteProductActionButton(product: ProductDTO) {
+    const buttons = [
+      {
+        text: 'Cancelar',
+        role: 'cancel'
+      },
+      {
+        text: 'Confirmar',
+        role: 'confirm',
+        handler: () => { this.deleteProductFromOrder(product) }
+      }
+    ]
+
+    await this.tools.presentAlert('Alerta', `${product.description} será removido del pedido`, buttons)
+  }
+
   deleteProductFromOrder(product: ProductDTO) {
-    if (confirm(`¿Desea eliminar ${product.description} del pedido?`)) {
-      this.order = this.order.filter(item => item.product!.sku !== product.sku)
-      this.tools.presentToast('Producto eliminado del pedido')
-    }
+    this.order = this.order.filter(item => item.product!.sku !== product.sku)
+    this.tools.presentToast('Producto eliminado del pedido')
     this.setOrder()
   }
 
@@ -169,12 +183,28 @@ export class CreateOrderPage {
     return array.map(product => `${product.product!.sku} (${product.quantity}.`).join("\n");
   }
 
-  deleteOrder() {
-    if (confirm('El pedido se borrará por completo')) {
-      this.order = []
-      this.closeCart()
-      this.tools.presentToast('Pedido borrado')
+  async deleteOrderActionButton() {
+    {
+      const buttons = [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+        {
+          text: 'Confirmar',
+          role: 'confirm',
+          handler: () => { this.deleteOrder() }
+        },
+      ]
+
+      await this.tools.presentAlert('Alerta', 'El pedido se borrará por completo', buttons)
     }
+  }
+
+  deleteOrder() {
+    this.order = []
+    this.closeCart()
+    this.tools.presentToast('Pedido borrado')
     this.setOrder()
   }
 
@@ -212,6 +242,23 @@ export class CreateOrderPage {
     let order = JSON.parse(localStorage.getItem('order')!)
     if (order) return order
     else return []
+  }
+
+  async continueLastOrder() {
+    const buttons = [
+      {
+        text: 'Borrar',
+        role: 'cancel',
+        handler: () => { this.deleteOrder() }
+      },
+      {
+        text: 'Continuar',
+        role: 'confirm',
+        handler: () => { this.order = this.getOrder() }
+      },
+    ]
+
+    await this.tools.presentAlert('Alerta', 'Hay un pedido en progreso!\n¿Desea borrarlo o continuarlo?', buttons)
   }
 
   homePage() {
