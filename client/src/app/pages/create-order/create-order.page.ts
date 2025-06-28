@@ -118,6 +118,8 @@ export class CreateOrderPage {
         }
       }
 
+      if (this.checkIsInOrder(product.product!)) this.deleteProductFromOrder(product.product!)
+
       this.order.push(product)
       this.tools.presentToast('Producto agregado al pedido')
       this.closeAddProductModal()
@@ -147,16 +149,21 @@ export class CreateOrderPage {
     this.setOrder()
   }
 
+  // modifyQuantity(product: ProductInCart) {
+  //   const quantity = prompt(`Modificar pedido\n${product.product!.description} ${product.quantity} unidades\nNueva cantidad de unidades: `, product.quantity)
+  //   if (quantity !== product.quantity && quantity !== null) {
+  //     if (quantity !== '' && parseInt(quantity) > 0) {
+  //       this.order[this.order.findIndex(item => item.product!.sku === product.product!.sku)].quantity = quantity.replace(/\s+/g, '')
+  //       this.tools.presentToast('Cantidad modificada')
+  //     }
+  //     else this.tools.presentToast('Error - Ingrese una cantidad de unidades válida')
+  //   }
+  //   this.setOrder()
+  // }
+
   modifyQuantity(product: ProductInCart) {
-    const quantity = prompt(`Modificar pedido\n${product.product!.description} ${product.quantity} unidades\nNueva cantidad de unidades: `, product.quantity)
-    if (quantity !== product.quantity && quantity !== null) {
-      if (quantity !== '' && parseInt(quantity) > 0) {
-        this.order[this.order.findIndex(item => item.product!.sku === product.product!.sku)].quantity = quantity.replace(/\s+/g, '')
-        this.tools.presentToast('Cantidad modificada')
-      }
-      else this.tools.presentToast('Error - Ingrese una cantidad de unidades válida')
-    }
-    this.setOrder()
+    this.openAddProductModal(product.product!)
+    this.quantityForm.setValue({ 'quantity': product.quantity })
   }
 
   checkIsInOrder(product: ProductDTO): boolean {
