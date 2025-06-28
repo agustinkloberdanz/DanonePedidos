@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { ProductDTO } from 'src/app/models/productDTO';
 import { ProductService } from 'src/app/services/products/product.service';
 import { AlertTools } from 'src/app/tools/AlertTools';
-import { listOfProducts } from 'src/app/listOfProducts';
 import { UserService } from 'src/app/services/users/user.service';
 
 @Component({
@@ -23,7 +22,6 @@ export class SupervisorPage {
 
   async ionViewWillEnter() {
     await this.getData()
-    await this.listProducts()
   }
 
   async getData() {
@@ -33,19 +31,30 @@ export class SupervisorPage {
       async (res: any) => {
         if (res.statusCode != 200) this.router.navigateByUrl('login')
         else if (res.model.role != 0) this.router.navigateByUrl('home')
+        else await this.getAllProducts()
 
-        this.tools.dismissLoading()
+        await this.tools.dismissLoading()
       },
       async (err) => {
-        localStorage.clear()
-        this.tools.dismissLoading()
-        this.router.navigateByUrl('login')
+        await this.tools.logout()
       }
     )
   }
 
-  createOrderPage() {
-    this.router.navigateByUrl('create-order')
+  async getAllProducts() {
+    await this.tools.presentLoading();
+
+    this.productsService.getAllByBrand().subscribe(
+      async (res: any) => {
+        if (res.statusCode != 200) this.router.navigateByUrl('login')
+        else this.data = res.model
+
+        await this.tools.dismissLoading()
+      },
+      async (err) => {
+        await this.tools.logout()
+      }
+    )
   }
 
   openAddProductModal() {
@@ -89,7 +98,7 @@ export class SupervisorPage {
         if (res.statusCode != 200) {
           await this.tools.presentAlert('Etkilla', res.message, ['Aceptar']);
         } else {
-          await this.listProducts()
+          await this.getAllProducts()
         }
         await this.tools.dismissLoading();
       },
@@ -100,34 +109,7 @@ export class SupervisorPage {
     )
   }
 
-  async listProducts() {
-
-    // Cargar productos desde json local
-    this.data = listOfProducts.map(item => ({
-      name: item.brand.name,
-      products: item.brand.products.map(product => ({
-        brand: product.brand,
-        description: product.description,
-        sku: product.sku,
-        imageUrl: product.imageUrl
-      }))
-    }));
-
-    // Cargar productos desde el servicio
-    //     await this.tools.presentLoading('Cargando productos...')
-    //     this.productsService.getAllByBrand().subscribe(
-    //       async (res: any) => {
-    //         if (res.statusCode != 200) {
-    //           await this.tools.presentToast('Error al cargar los productos', 2000, 'danger');
-    //         } else {
-    //           this.data = res.model;
-    //         }
-    //         await this.tools.dismissLoading();
-    //       }, async (error) => {
-    //         await this.tools.dismissLoading();
-    //         await this.tools.presentToast('Error en el servidor', 2000, 'danger');
-    //       }
-    //     )
-    // }
+  async homePage() {
+    await this.router.navigateByUrl('home')
   }
 }

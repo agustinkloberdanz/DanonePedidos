@@ -11,10 +11,10 @@ export class MainService {
   
   constructor(public http: HttpClient) {
     //localhost
-    this.baseRoute = "https://localhost:7010/api/";
+    // this.baseRoute = "https://localhost:7010/api/";
 
     //webAPI
-    // this.baseRoute = "https://p4bnc6db-7010.brs.devtunnels.ms/api/";
+    this.baseRoute = "https://danone-client20250627165225-atgmfddbh4cehdeg.brazilsouth-01.azurewebsites.net/api/";
   }
 
   protected createHeader(token: any) {

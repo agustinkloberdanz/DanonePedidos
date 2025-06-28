@@ -27,13 +27,12 @@ export class RegisterPage {
     this.userService.getData().subscribe(
       async (res: any) => {
         if (res.statusCode == 200) this.router.navigateByUrl('home')
-        else localStorage.clear()
+        else await this.tools.logout()
 
         await this.tools.dismissLoading()
       }, 
       async (err) => {
-        localStorage.clear()
-        await  this.tools.dismissLoading()        
+        await this.tools.logout()      
       }
     )
   }

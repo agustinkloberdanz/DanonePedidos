@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 import { ToastController, LoadingController, AlertController } from "@ionic/angular";
 
 @Injectable({
@@ -11,7 +12,8 @@ export class AlertTools {
   constructor(
     private alertController: AlertController,
     private toastController: ToastController,
-    private loadingController: LoadingController
+    private loadingController: LoadingController,
+    private router: Router
   ) { }
 
   async presentAlert(header: string, message: string, buttons: any[] = ['OK']): Promise<void> {
@@ -48,5 +50,11 @@ export class AlertTools {
       await this.loading.dismiss();
       this.loading = null;
     }
+  }
+
+  async logout() {
+    localStorage.removeItem('Token')
+    await this.dismissLoading()
+    await this.router.navigateByUrl('login')
   }
 }

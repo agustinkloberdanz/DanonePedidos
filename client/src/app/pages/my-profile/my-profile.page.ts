@@ -15,7 +15,7 @@ export class MyProfilePage {
 
   arefieldsDisabled: boolean = true
 
-  constructor(private router: Router, private tools: AlertTools, private userService: UserService) { }
+  constructor(private router: Router, protected tools: AlertTools, private userService: UserService) { }
 
   async ionViewWillEnter() {
     await this.getData()
@@ -32,9 +32,7 @@ export class MyProfilePage {
         await this.tools.dismissLoading()
       },
       async (err) => {
-        localStorage.clear()
-        await this.tools.dismissLoading()
-        this.router.navigateByUrl('login')
+        await this.tools.logout()
       }
     )
   }
@@ -74,7 +72,7 @@ export class MyProfilePage {
       },
     ]
 
-    await this.tools.presentAlert('Cerrar sesión', '¿Está seguro de que desea cerrar sesión?', buttons)
+    await this.tools.presentAlert('Eliminar cuenta', '¿Está seguro de que desea eliminar su cuenta de manera permanente?', buttons)
   }
 
   async updateUser() {
@@ -90,7 +88,7 @@ export class MyProfilePage {
         await this.tools.dismissLoading()
       },
       async (err) => {
-        await this.tools.presentAlert('Error', 'Error al actualizar la cuenta')
+        await this.tools.presentAlert('Error', 'Error al actualizar sus datos')
         await this.tools.dismissLoading()
       }
     )
@@ -105,13 +103,14 @@ export class MyProfilePage {
       {
         text: 'Aceptar',
         role: 'confirm',
-        handler: () => {
-          localStorage.clear()
-          this.router.navigateByUrl('login')
-        }
+        handler: async () => { await this.tools.logout() }
       },
     ]
 
     await this.tools.presentAlert('Cerrar sesión', '¿Está seguro de que desea cerrar sesión?', buttons)
+  }
+
+  homePage() {
+    this.router.navigateByUrl('home')
   }
 }

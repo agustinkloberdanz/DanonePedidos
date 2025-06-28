@@ -55,9 +55,8 @@ export class ProductModalComponent implements OnInit {
             await this.closeModal()
           }
           await this.tools.dismissLoading();
-        }, (error) => {
-          this.tools.dismissLoading();
-          this.tools.presentToast('Error en el servidor', 2000, 'danger');
+        }, async (error) => {
+          await this.tools.logout()
         })
     } else {
       this.tools.presentToast('Por favor, llena todos los campos correctamente', 2000, 'danger');
@@ -79,12 +78,11 @@ export class ProductModalComponent implements OnInit {
             await this.closeModal()
           }
           await this.tools.dismissLoading();
-        }, (error) => {
-          this.tools.dismissLoading();
-          this.tools.presentToast('Error en el servidor', 2000, 'danger');
+        }, async (error) => {
+          await this.tools.logout()
         })
     } else {
-      this.tools.presentToast('Por favor, llena todos los campos correctamente', 2000, 'danger');
+      await this.tools.presentToast('Por favor, llena todos los campos correctamente', 2000, 'danger');
     }
   }
 

@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>GRUPO DANONE</ion-title>
+    <ion-title style="text-align: center;">GRUPO DANONE</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,29 +11,29 @@
       <h1>Registrate</h1>
     </ion-label>
 
-      <ion-item>
-        <ion-label position="floating">Nombre</ion-label>
-        <ion-input type="text" [(ngModel)]="user.firstName"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Apellido</ion-label>
-        <ion-input type="text" [(ngModel)]="user.lastName"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Email</ion-label>
-        <ion-input type="email" [(ngModel)]="user.email"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Contraseña</ion-label>
-        <ion-input type="password" [(ngModel)]="user.password"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Repetir contraseña</ion-label>
-        <ion-input type="password" [(ngModel)]="passwordCheck"></ion-input>
-      </ion-item>
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input type="text" [(ngModel)]="user.firstName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Apellido</ion-label>
+      <ion-input type="text" [(ngModel)]="user.lastName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" [(ngModel)]="user.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Repetir contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="passwordCheck"></ion-input>
+    </ion-item>
 
     <div class="button-container">
-      <ion-button expand="full" (click)="register()">Register</ion-button>
+      <ion-button expand="full" shape="round" (click)="register()">Register</ion-button>
     </div>
 
     <div class="footer">

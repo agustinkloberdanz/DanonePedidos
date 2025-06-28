@@ -13,7 +13,7 @@ import { AlertTools } from 'src/app/tools/AlertTools';
 export class HomePage {
   user: UserDTO = new UserDTO()
 
-  constructor(private router: Router, private tools: AlertTools, private userService: UserService) { }
+  constructor(private router: Router, protected tools: AlertTools, private userService: UserService) { }
 
   async ionViewWillEnter() {
     await this.getData()
@@ -30,11 +30,25 @@ export class HomePage {
         this.tools.dismissLoading()
       },
       async (err) => {
-        localStorage.clear()
-        this.tools.dismissLoading()
-        this.router.navigateByUrl('login')
+        await this.tools.logout()
       }
     )
+  }
+
+  async logout() {
+    const buttons = [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+      },
+      {
+        text: 'Aceptar',
+        role: 'confirm',
+        handler: async () => {await this.tools.logout()}
+      },
+    ]
+
+    await this.tools.presentAlert('Cerrar sesión', '¿Está seguro de que desea cerrar sesión?', buttons)
   }
 
   createOrderPage() { this.router.navigateByUrl('create-order') }

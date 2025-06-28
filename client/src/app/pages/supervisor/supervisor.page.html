@@ -1,19 +1,19 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>GRUPO DANONE</ion-title>
-
+    
     <ion-buttons slot="start">
-      <ion-button color="primary" (click)="createOrderPage()">
-        <ion-icon size="large" name="clipboard"></ion-icon>
+      <ion-button color="primary" (click)="homePage()" size="large">
+        <ion-icon slot="icon-only" name="home"></ion-icon>
       </ion-button>
     </ion-buttons>
 
+    <ion-title style="text-align: center;">GRUPO DANONE</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" mode="ios">
   <ion-toolbar><ion-title>Supervisor</ion-title></ion-toolbar>
-  
+
   <ion-button class="add-product-button" (click)="openAddProductModal()" expand="block" color="success">
     Crear producto
     <ion-icon slot="icon-only" name="add"></ion-icon>
@@ -47,7 +47,7 @@
 
   <ion-modal [isOpen]="isProductModalOpen" (willDismiss)="isProductModalOpen = false">
     <ng-template>
-      <app-product-modal [product]="product" (confirm)="listProducts()"></app-product-modal>
+      <app-product-modal [product]="product" (confirm)="getAllProducts()"></app-product-modal>
     </ng-template>
   </ion-modal>
 

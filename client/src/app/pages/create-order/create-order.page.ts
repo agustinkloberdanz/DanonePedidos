@@ -53,26 +53,23 @@ export class CreateOrderPage {
 
     this.userService.getData().subscribe(
       async (res: any) => {
-        if (res.statusCode != 200) this.router.navigateByUrl('login')
-          
-        this.tools.dismissLoading()
+        if (res.statusCode != 200) await this.router.navigateByUrl('login')
+
+        await this.tools.dismissLoading()
       },
       async (err) => {
-        localStorage.clear()
-        this.tools.dismissLoading()
-        this.router.navigateByUrl('login')
+        await this.tools.logout()
       }
     )
   }
 
   async listProducts() {
-    // Cargar productos desde el servicio
     await this.tools.presentLoading('Cargando productos...')
+
     this.productsService.getAllByBrand().subscribe(
       async (res: any) => {
-        if (res.statusCode != 200) {
-          await this.tools.presentToast('Error al cargar los productos', 2000, 'danger');
-        } else {
+        if (res.statusCode != 200) await this.tools.presentToast('Error al cargar los productos', 2000, 'danger');
+        else {
           this.listOfProducts = res.model;
           this.data = this.listOfProducts
         }
@@ -217,7 +214,7 @@ export class CreateOrderPage {
     else return []
   }
 
-  supervisorPage() {
-    this.router.navigateByUrl('supervisor')
+  homePage() {
+    this.router.navigateByUrl('home')
   }
 }
