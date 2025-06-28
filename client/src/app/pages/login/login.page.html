@@ -11,13 +11,13 @@
       <h1>Iniciar sesión</h1>
     </ion-label>
 
-    <ion-item>
+    <ion-item color="none">
       <ion-label position="floating">Email</ion-label>
-      <ion-input type="email" [(ngModel)]="user.email"></ion-input>
+      <ion-input type="email" [(ngModel)]="loginDTO.email"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item color="none">
       <ion-label position="floating">Contraseña</ion-label>
-      <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+      <ion-input type="password" [(ngModel)]="loginDTO.password"></ion-input>
     </ion-item>
 
     <div class="button-container">

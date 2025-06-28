@@ -12,7 +12,7 @@ import { AlertTools } from 'src/app/tools/AlertTools';
 })
 export class LoginPage {
 
-  user: LoginDTO = new LoginDTO();
+  loginDTO: LoginDTO = new LoginDTO();
 
   constructor(private tools: AlertTools, private userService: UserService, private router: Router, private authService: AuthService) { }
 
@@ -31,30 +31,34 @@ export class LoginPage {
         await this.tools.dismissLoading()
       },
       async (err) => {
-        await this.tools.logout()
+        await this.tools.dismissLoading()
       }
     )
   }
 
   async login() {
-    await this.tools.presentLoading('Iniciando sesión...');
 
-    this.authService.login(this.user).subscribe(
-      async (res: any) => {
-        if (res.statusCode != 200) await this.tools.presentToast(res.message, 2000);
+    if (this.loginDTO.email == '' || this.loginDTO.password == '') 
+      await this.tools.presentToast('Alerta - Completa todos los campos', 2000)
+    else {
+      await this.tools.presentLoading('Iniciando sesión...');
 
-        else {
-          localStorage.setItem('Token', res.model)
-          this.router.navigateByUrl('home')
+      this.authService.login(this.loginDTO).subscribe(
+        async (res: any) => {
+          if (res.statusCode != 200) await this.tools.presentToast(res.message, 2000);
+
+          else {
+            localStorage.setItem('Token', res.model)
+            this.router.navigateByUrl('home')
+          }
+
+          await this.tools.dismissLoading()
+        },
+        async (err) => {
+          await this.tools.presentAlert('Error', `${err.message}`);
+          await this.tools.dismissLoading()
         }
-
-        await this.tools.dismissLoading()
-      },
-      async (err) => {
-        await this.tools.presentAlert('Error', 'Error al iniciar sesión');
-        await this.tools.dismissLoading()
-      }
-    )
+      )
+    }
   }
-
 }

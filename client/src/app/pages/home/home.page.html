@@ -1,7 +1,5 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>GRUPO DANONE</ion-title>
-
     <ion-buttons slot="end">
       <ion-button (click)="logout()" size="large">
         <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
@@ -12,8 +10,15 @@
 
 <ion-content [fullscreen]="true" mode="ios">
   <div class="container">
-    <ion-button (click)="createOrderPage()" >Hacer pedido</ion-button>
-    <ion-button *ngIf="user.role == 0" (click)="supervisorPage()">Gestionar productos</ion-button>
-    <ion-button (click)="myProfilePage()">Mis datos</ion-button>
+
+    <ion-img alt="El logo de DANONE" 
+    src="../../../assets/DANONE Pedidos logo.jpg" 
+    class="logo"></ion-img>
+
+    <div class="buttons">
+      <ion-button (click)="createOrderPage()">Hacer pedido</ion-button>
+      <ion-button *ngIf="user.role == 0" (click)="supervisorPage()">Gestionar productos</ion-button>
+      <ion-button (click)="myProfilePage()">Mis datos</ion-button>
+    </div>
   </div>
 </ion-content>

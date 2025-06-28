@@ -1,7 +1,11 @@
 .content {
     width: 90vw;
     margin: auto;
- 
+    margin-top: 5vh;
+    background-color: #3b3b3b;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 2.5%;
 }
 
 .title {
@@ -18,8 +22,5 @@
         margin: auto;
         margin-top: 5vh;
         padding: 20px;
-        background-color: #3b3b3b;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);    
     }
-}    
+}

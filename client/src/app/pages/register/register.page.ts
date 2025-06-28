@@ -30,51 +30,55 @@ export class RegisterPage {
         else await this.tools.logout()
 
         await this.tools.dismissLoading()
-      }, 
+      },
       async (err) => {
-        await this.tools.logout()      
+        await this.tools.dismissLoading()
       }
     )
   }
 
   async register() {
-    if (this.user.password !== this.passwordCheck) return await this.tools.presentAlert('Error', 'Las contraseñas no coinciden');
+    if (this.user.email == '' || this.user.firstName == '' || this.user.lastName == '' || this.user.password == '' || this.passwordCheck == '')
+      await this.tools.presentToast('Alerta - Completa todos los campos', 2000)
 
-    await this.tools.presentLoading('Registrando usuario...');
+    else {
+      if (this.user.password !== this.passwordCheck) return await this.tools.presentAlert('Error', 'Las contraseñas no coinciden');
+      else {
+        await this.tools.presentLoading('Registrando usuario...');
 
-    this.userService.register(this.user).subscribe(
-      async (res: any) => {
-        if (res.statusCode != 200) await this.tools.presentAlert('Error', res.message);
+        this.userService.register(this.user).subscribe(
+          async (res: any) => {
+            if (res.statusCode != 200) await this.tools.presentAlert('Error', res.message);
 
-        else {
-          await this.tools.presentToast('Usuario registrado correctamente', 2000, 'success');
+            else {
+              await this.tools.presentToast('Usuario registrado correctamente', 2000, 'success');
 
-          this.authService.login(this.user).subscribe(
-            async (res: any) => {
-              if (res.statusCode != 200) await this.tools.presentAlert('Error', res.message);
+              this.authService.login(this.user).subscribe(
+                async (res: any) => {
+                  if (res.statusCode != 200) await this.tools.presentAlert('Error', res.message);
 
-              else {
-                localStorage.setItem('Token', res.model)
-                this.router.navigateByUrl('home')
-              }
+                  else {
+                    localStorage.setItem('Token', res.model)
+                    this.router.navigateByUrl('home')
+                  }
 
-              await this.tools.dismissLoading()
-            },
-            async (err) => {
-              await this.tools.presentAlert('Error', 'Error al iniciar sesión');
-              await this.tools.dismissLoading()
+                  await this.tools.dismissLoading()
+                },
+                async (err) => {
+                  await this.tools.presentAlert('Error', 'Error al iniciar sesión');
+                  await this.tools.dismissLoading()
+                }
+              )
             }
-          )
-        }
 
-        await this.tools.dismissLoading()
-      },
-      async (err) => {
-        await this.tools.presentAlert('Error', 'Error al registrar el usuario');
-        await this.tools.dismissLoading()
+            await this.tools.dismissLoading()
+          },
+          async (err) => {
+            await this.tools.presentAlert('Error', 'Error al registrar el usuario');
+            await this.tools.dismissLoading()
+          }
+        )
       }
-    )
+    }
   }
-
-
 }
