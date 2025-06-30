@@ -59,13 +59,13 @@ export class ProductModalComponent implements OnInit {
           await this.tools.logout()
         })
     } else {
-      this.tools.presentToast('Por favor, llena todos los campos correctamente', 2000, 'danger');
+      this.tools.presentToast('Por favor, llena todos los campos', 2000, 'danger');
     }
   }
 
   async updateProduct() {
     if (this.validateFields()) {
-      await this.tools.presentLoading('Agregando nuevo producto...')
+      await this.tools.presentLoading('Modificando producto...')
 
       this.productsService.update(this.formModel as ProductDTO).subscribe(
         async (res: any) => {
@@ -82,7 +82,7 @@ export class ProductModalComponent implements OnInit {
           await this.tools.logout()
         })
     } else {
-      await this.tools.presentToast('Por favor, llena todos los campos correctamente', 2000, 'danger');
+      await this.tools.presentToast('Por favor, llena todos los campos', 2000, 'danger');
     }
   }
 
