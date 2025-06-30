@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
 
-    <ion-buttons slot="start">
+    <ion-buttons slot="start" style="position: fixed; left: 0;">
       <ion-button color="primary" (click)="homePage()" size="large">
         <ion-icon slot="icon-only" name="home"></ion-icon>
       </ion-button>
@@ -13,20 +13,27 @@
 
 <ion-content [fullscreen]="true" mode="ios">
   <ion-toolbar><ion-title>Supervisor</ion-title></ion-toolbar>
-  
+
   <div class="container">
 
-    <ion-button class="add-product-button" (click)="openAddProductModal()" expand="block" color="success">
-      Agregar producto
-      <ion-icon slot="icon-only" name="add"></ion-icon>
-    </ion-button>
+    <div class="buttons">
+      <ion-button class="add-product-button" (click)="openAddProductModal()" color="success">
+        Agregar producto
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+
+      <ion-button class="grid-button" (click)="handleGridButton()">
+        Ver
+        <ion-icon slot="icon-only" name="grid-outline"></ion-icon>
+      </ion-button>
+    </div>
 
     @for (brand of data; track brand) {
     <ion-toolbar color="primary">
       <ion-title>{{brand.name}}</ion-title>
     </ion-toolbar>
 
-    <div class="products">
+    <div id={{brand.name}} class="products2">
       <ion-card *ngFor="let product of brand.products" class="product">
         <ion-img [src]="product.imageUrl" [alt]="product.description"></ion-img>
         <ion-card-header>

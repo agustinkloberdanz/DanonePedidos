@@ -109,6 +109,23 @@ export class SupervisorPage {
     )
   }
 
+  handleGridButton() {
+    this.data.forEach(brand => {
+      var productsElement = document.getElementById(brand.name)!
+
+      if (productsElement.getAttribute('class') == 'products2') {
+        productsElement.removeAttribute('class')
+        productsElement.setAttribute('class', 'products4')
+      } else if (productsElement.getAttribute('class') == 'products4') {
+        productsElement.removeAttribute('class')
+        productsElement.setAttribute('class', 'products6')
+      } else if (productsElement.getAttribute('class') == 'products6') {
+        productsElement.removeAttribute('class')
+        productsElement.setAttribute('class', 'products2')
+      }
+    })
+  }
+
   async homePage() {
     await this.router.navigateByUrl('home')
   }

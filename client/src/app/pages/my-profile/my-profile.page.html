@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-buttons slot="start" style="position: absolute; left: 0;">
+    <ion-buttons slot="start" style="position: fixed; left: 0;">
       <ion-button (click)="homePage()" size="large">
         <ion-icon slot="icon-only" name="home"></ion-icon>
       </ion-button>
@@ -8,7 +8,7 @@
 
     <ion-title style="text-align: center;">Mi Perfil</ion-title>
 
-    <ion-buttons slot="end" style="position: absolute; right: 0;">
+    <ion-buttons slot="end" style="position: fixed; right: 0;">
       <ion-button (click)="logout()" size="large">
         <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
       </ion-button>
